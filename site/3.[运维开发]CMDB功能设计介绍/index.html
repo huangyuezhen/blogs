@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>cmdb功能介绍 - 运维开发文档资源</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "cmdb\u529f\u80fd\u4ecb\u7ecd";
+    var mkdocs_page_input_path = "3.[\u8fd0\u7ef4\u5f00\u53d1]CMDB\u529f\u80fd\u8bbe\u8ba1\u4ecb\u7ecd.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 运维开发文档资源</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../1.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/">开发工具</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../2.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/">测试环境</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">cmdb功能介绍</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1">1.架构</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2cmdb">2.CMDB 的信息来源</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#21cmdb-ucloud">2.1cmdb ucloud 定时同步脚本</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#211-cmdb-ucloud">2.1.1 cmdb ucloud 定时同步脚本更新的内容</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#22-cmdb-agent">2.2 CMDB-agent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#221-cmdb-agent">2.2.1 那么cmdb-agent 主要是更新了哪些信息呢？</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#223-cmdb">2.2.3 cmdb 手动新增维护</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3cmdb">3.CMDB主要资源对象数据库设计</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_1">主机</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">标签</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-cmdb">4. 其他系统对cmdb 的依赖</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#41-cmdb">4.1 发布系统对cmdb的依赖</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../4.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/">publish功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../5.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%20%E4%B8%8EWatcher%E4%BB%8B%E7%BB%8D/">dbms& wathcer功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../7.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/">dbms部署</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">运维开发文档资源</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>cmdb功能介绍</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="cmdb">CMDB功能设计介绍</h1>
+<h2 id="1">1.架构</h2>
+<p><img alt="image-20200420175351245" src="http://res-doc.yunnex.com/picgo/image-20200420175351245.png" /></p>
+<p>cmdb 相对是比较简单的一个架构，基本就是一个简单的资产管理系统，基本就是资源的CRUD的基本操作。所以在架构上，就是一个mysql ,一个 server ,一个web 。 两侧的 cmdb-agent ,shell 定时脚本 主要是 信息的来源，进行一些资源信息的创建 和更新操作。</p>
+<h2 id="2cmdb">2.CMDB 的信息来源</h2>
+<p>cmdb 的信息主要有三大来源</p>
+<ul>
+<li>
+<p>ucloud api 定时脚本</p>
+</li>
+<li>
+<p>cmdb-agent 定时更新</p>
+</li>
+<li>
+<p>cmdb 手动新增维护</p>
+</li>
+</ul>
+<h3 id="21cmdb-ucloud">2.1cmdb ucloud 定时同步脚本</h3>
+<p>每天8：30 cmdb 同步信息的代码 地址： http://git.dev.yunnex.com/ops/opstool/tree/master/cmdb-crontab</p>
+<p>在UGZB-CMDB-001 主机上的crontab 设置</p>
+<pre><code>product@UGZB-CMDB-001 ~]$ sudo crontab -l
+30 8 * * * /data/svr/python-env/bin/python /root/cron/cmdb-crontab/main.py
+</code></pre>
+
+<ul>
+<li>
+<p>ucloud的uhost，phost，udb，eip，ulb等信息，每天早上8点30，定时任务自动同步到cmdb。</p>
+</li>
+<li>
+<p>定时任务同步的时候，<strong>只新增，不删除</strong></p>
+</li>
+<li>
+<p>删除需要根据每天早上8:30 cdmb的scan 邮件进行手动删除</p>
+</li>
+</ul>
+<h4 id="211-cmdb-ucloud">2.1.1 cmdb ucloud 定时同步脚本更新的内容</h4>
+<ul>
+<li><strong>云主机：</strong> </li>
+</ul>
+<p>当云主机在cmdb 上没存在记录时，新增所有属性：hostname /内存大小/ip/cpu 信息等</p>
+<p>当云主机已存在时， 当磁盘大小有变化时，只更新磁盘属性，其他属性不更新.</p>
+<ul>
+<li><strong>ucloud 物理主机</strong></li>
+</ul>
+<p>更新信息和新增信息一致： 内存大小/磁盘大小/cpu 核数/SN</p>
+<ul>
+<li><strong>UDB</strong></li>
+</ul>
+<p>udb 由于无法安装 cmdb-agent ,所以udb的信息来源主要是ucloud api的更新 或者手动新增修改</p>
+<p>更新或新增的属性有： IP / 是否主库/数据库类型/从库信息/内存/磁盘大小/SSD机型信息</p>
+<ul>
+<li><strong>ULB</strong></li>
+</ul>
+<p>同udb 一样，ulb没有cmdb-agent ,更新的信息来源也只有 ucloud api 或者手动新增修改</p>
+<p>更新或新增的属性有： IP /backend(连接的是 application or database)</p>
+<ul>
+<li><strong>EIP</strong></li>
+</ul>
+<p>eip 的信息来源也只有ucloud api 或者手动新增修改</p>
+<p>更新或新增的属性有： ip address /绑定的资源（table_tag ,table_id）</p>
+<h3 id="22-cmdb-agent">2.2 CMDB-agent</h3>
+<p>cmdb-agent 是一个采用python 语言写的程序，通过cmdb-server的api与 cmdb-server 交互数据，主要是采用python的requests 包来进行网络通信。</p>
+<p>在业务主机初始化时，都会把cmdb-agent 作为必安装选项，在主机初始化时进行安装。</p>
+<p>cmdb-agent 每小时会自动上报一次。</p>
+<p>那如果cmdb-agent 挂了呢 ？不必担心，在初始化主机时，我们也把cmdb-agent 的存活与否添加到了zabbix 的监控里面，一旦业务主机的cmdb-agent 挂了，zabbix 会发出邮件告警，及时执行相应的处理即可。</p>
+<h4 id="221-cmdb-agent">2.2.1 那么cmdb-agent 主要是更新了哪些信息呢？</h4>
+<h5 id="2211-cmdb-agent">2.2.1.1 cmdb-agent 会新增或更新的内容</h5>
+<p>cmdb-agent 在新增或更新内容前会判断一下需不需要新增或修改，比如新增主机时，采用hostname为依据，向cmdb-server进行查询该主机是否存在，如果不存在直接新增，如果存在，那么判断一下属性有没变化（当主机存在cmdb-server时，会获得cmdb-server中主机的属性信息，从而与本地获取的信息进行对比），有变化再调用更新接口。</p>
+<p>当cmdb-server数据库中记录不存在（新增）或属性信息有变更（更新）时，cmdb-agent 会新增或更新一下内容：</p>
+<ul>
+<li>主机信息（hostname /cpu /内存大小）</li>
+<li>物理主机（server info /sn）</li>
+<li>IP  (ip类型/ip 地址)</li>
+<li>主机类型 （对应表 host_type）</li>
+<li>主机和应用的绑定关系 (对应表 cmdb_host_application)</li>
+<li>该主机上应用的版本信息(对应表 cmdb_host_application)</li>
+</ul>
+<p><strong>主机的新增或更新依据，主要是依据hostname 去跟cmdb-server 交互判别的。</strong></p>
+<h5 id="2212-cmdb-agent">2.2.1.2 cmdb-agent <strong>不会</strong>新增或修改的内容</h5>
+<p>以下内容是cmdb-agent <strong>不会</strong>去维护的（新增或修改）,需要在cmdb 上手动维护</p>
+<ul>
+<li>
+<p>应用</p>
+</li>
+<li>
+<p>数据库</p>
+</li>
+<li>
+<p>应用与数据库的绑定信息</p>
+</li>
+</ul>
+<p>应用信息为什么没有去主动新增或者修改呢？主要是 两个原因：</p>
+<ul>
+<li>应用信息的发现，我们是通过 指定目录来发现，当目录下出现一些非应用文件时，也会被当作应用来上报，导致误报；</li>
+<li>当新增一个应用时，有了发布系统后，我们都是通过发布系统进行发版，那么还没发版，自然指定目录就没相关的应用，自然也就没法自动新增</li>
+</ul>
+<p>数据库则是当前我们没有简单的获取到数据库信息的方法，自然也就没法与应用来进行绑定。</p>
+<h4 id="223-cmdb">2.2.3 cmdb 手动新增维护</h4>
+<p>除了以上 ucloud api 定时 脚本更新， cmdb-agent 更新的信息以外，其余信息均需手动去进行更新维护。</p>
+<p><strong>cmdb 上的所有删除资源行为 ，均需手动操作，定时脚本 / cmdb-agent 不会自动删除资源</strong></p>
+<p>那么这里总结以下，有哪些资源的新增和修改是需要手动去操作维护的呢？</p>
+<p>主要有：</p>
+<ul>
+<li>
+<p>应用的新增</p>
+</li>
+<li>
+<p>非udb 数据库的新增</p>
+</li>
+<li>
+<p>数据库与应用的绑定关系</p>
+</li>
+</ul>
+<p>由于发布系统需要依赖cmdb 的主机与应用信息来进行发版，下面以 发布系统 发布一个新增的应用为例，讲一下cmdb 的操作过程。</p>
+<h5 id="2231-cmdb">2.2.3.1 CMDB新增应用以供发布系统进行发版</h5>
+<h6 id="22311">2.2.3.1.1新申请并初始化主机</h6>
+<p>在确定需要 新增应用后，需要申请主机，并对主机进行初始化。</p>
+<p>掌贝和花生卡这边，业务主机一般都是采用ucloud 的云主机，到ucloud 的操作界面进行申请即可。</p>
+<p>得到主机后，我们的初始化主机过程中，会安装cmdb-agent并 start 它，这样cmdb-server 将会获取到新增的主机信息，而无需手动到cmdb 进行主机新增。</p>
+<h6 id="22312">2.2.3.1.2 确定应用类型</h6>
+<p>​    新增一个应用时我们需要确定应用类型，目前发布系统支持发版的应用的应用类型有：</p>
+<ul>
+<li>web :  </li>
+</ul>
+<p>java 的tomcat 应用，发版时需要依赖jdk ，同时需要tomcat ,还需要nginx</p>
+<ul>
+<li>mod : </li>
+</ul>
+<p>使用dubbo 进行流量调度，是dubbo的 提供者，运行时需要依赖 jdk 和dubbo</p>
+<ul>
+<li>web+mod : </li>
+</ul>
+<p>web 和mod的结合版，既需要tomcat /nginx ，也需要dubbo 调度分配流量</p>
+<ul>
+<li>dubbo-consumer （最近新增的类型）：</li>
+</ul>
+<p>dubbo的纯消费者，只消费不提供服务，只需依赖jdk </p>
+<p>为什么会有一些纯消费者的应用呢？ 既不对外提供web 的服务，也不对内提供dubbo提供者的服务，那么这些应用到底是干什么的呢？</p>
+<p>原来这些应用主要是做一些统计 之类的定时任务，命名时一般以mod-job 作为后缀。</p>
+<p>如果需要查看各个应用类型，可以在 cmdb 的应用页面进行查看。</p>
+<ul>
+<li>spring ：  </li>
+</ul>
+<p>采用spring 框架的java 应用，使用eruke 来调度分配流量</p>
+<ul>
+<li>static</li>
+</ul>
+<p>​ 前端的静态文件，只需要采用 nginx 做服务器即可</p>
+<p>如果新增一个应用是希望采用 发布系统来发版的，那么就需按照上面的要求定义进行严格分类，因为发布系统是依赖于cdmb 的应用类型来对不同的应用执行不同的任务的。</p>
+<h6 id="2233-cdmb">2.2.3.3 在cdmb 的应用页面进行应用新增</h6>
+<p>应用的新增权限 只有“运维工程部”的成员才有这个权限，如果你发现 找不到新增的入口，请找运维部门人员，在cmdb上的部门页面把你加到 “运维工程部”这个部门上面来。</p>
+<p><strong>应用的部署路径</strong>也是必填选项，应用部署路径  在发布系统中多处需要用到，如 ： 启停应用，备份日志，下载包 等任务都需要用到，所以是个比较重要的属性。</p>
+<p>那么应用的部署路径怎么填写呢？也是按照应用分类来填写</p>
+<ul>
+<li>web</li>
+</ul>
+<p>```
+  /home/product/data/webapps/appname
+  如： /home/product/data/webapps/saofu-shop-shop</p>
+<p>当一台主机上有多个 web 应用时，就需要用端口号来区分<br />
+  /home/product/data/webapps8030/appname
+  如：    /home/product/data/webapps8030/invoice-web-shop
+  ```</p>
+<ul>
+<li>mod</li>
+</ul>
+<p><code>/home/product/data/mods/appname
+  如： /home/product/data/mods/mall-mod-dal</code></p>
+<ul>
+<li>web+mod</li>
+</ul>
+<p><code>web+mod 的类型一般是历史遗留应用，新增一般很少是这个类型。 web+mod的类型，部署路径既有采取
+  web 类型的，也有采取mod 类型的，如果的确是需要新增，建议跟运维部门资深同事咨询并询问开发的相关情况。</code></p>
+<p><img alt="image-20200422183456521" src="http://res-doc.yunnex.com/picgo/image-20200422183456521.png" /></p>
+<ul>
+<li>dubbo-consumer</li>
+</ul>
+<p>按mod 类型的规则来添加即可</p>
+<ul>
+<li>spring</li>
+</ul>
+<p>按mod 类型的规则来添加即可</p>
+<ul>
+<li>static</li>
+</ul>
+<p><code>/home/product/data/nginx/appname
+  如： /home/product/data/nginx/pinka-web-substation-frontend</code></p>
+<h6 id="2234">2.2.3.4 绑定主机信息</h6>
+<p>应用新增完成后，在应用页面 显示出“操作”栏，在“操作”栏下面有个“绑定应用”的按钮，搜索出新申请的主机，并绑定到目标应用上</p>
+<h6 id="2235">2.2.3.5 绑定数据库信息</h6>
+<p>如果该应用还需要连接数据库，虽然不影响发版，但为后面的维护，还是需要到“数据库名称”页面 进行 数据库 与 应用的绑定。</p>
+<h2 id="3cmdb">3.CMDB主要资源对象数据库设计</h2>
+<ul>
+<li>
+<p>主机</p>
+</li>
+<li>
+<p>应用 </p>
+</li>
+<li>
+<p>数据库</p>
+</li>
+</ul>
+<p>以上三者 是cmdb 的三大基石，也是cmdb 提供的最主要的功能，应用需要与主机进行绑定，数据库实例也需跟主机进行绑定，应用与数据库之间也有个绑定关系。</p>
+<p>下图是 cmdb只要资源的数据表设计（ps:不清晰的话 请查看svn： devops/运维开发/图/cmdb数据库表设计.jpg）</p>
+<p><img alt="" src="http://res-doc.yunnex.com/picgo/cmdb数据库表设计.jpg" /></p>
+<h3 id="_1"><strong>主机</strong></h3>
+<p>主机类型有：</p>
+<ul>
+<li>云主机</li>
+<li>ucloud物理机</li>
+<li>混合云虚拟机</li>
+<li>混合云物理机</li>
+</ul>
+<p>信息更新来源有：</p>
+<ul>
+<li>ucloud 接口获取云主机/ucloud物理机 的信息新增和更新（每天8:30定时脚本更新）</li>
+<li>cmdb-agent 获取混合云虚拟机/混合云物理机 的信息新增和更新（cmdb-agent 每小时上报一次）</li>
+</ul>
+<h3 id="_2"><strong>标签</strong></h3>
+<p>标签是 除了按部门对主机 /应用/数据库这些资源分类外，一种更为灵活的对资源进行分类的方法。</p>
+<p>那么标签是怎么设计实现的呢？</p>
+<p>主要是通过cmdb_tag  /cmdb_tag_resource两张表的设计来实现的。</p>
+<p>cmdb_tag_resource的关键字段如下：</p>
+<pre><code>id
+tag_id : cmdb_tag的id
+table_id : 资源的table_id
+table_tag : (对应的资源类型 1: host 2: application 3: ip 4: database 5:ulb)
+</code></pre>
+
+<p>cmdb_tag 的关键字段如下</p>
+<pre><code>id
+name ： 标签名
+</code></pre>
+
+<p>与普通的映射表不一样，普通的映射表 只需把两种资源的关系联系起来就好，</p>
+<p>但是我们的标签功能是需要处理多种资源（像上面所说的至少5+1种关系）。那么cmdb_tag_resource 是怎么处理这么种资源的呢？ 我们只通过 tabel_tag 和table_id 两个字段，table_tag 指明资源类型,table_id 指定 id ,两者结合达到查找不同资源的目的。</p>
+<h2 id="4-cmdb">4. 其他系统对cmdb 的依赖</h2>
+<h3 id="41-cmdb">4.1 发布系统对cmdb的依赖</h3>
+<p><img alt="image-20200422192634541" src="http://res-doc.yunnex.com/picgo/image-20200422192634541.png" /></p>
+<p>cmdb 是整个运维的基石，无论是 监控还是发布系统都需依赖于cmdb的信息。</p>
+<p>发布系统对cmdb的依赖体现在两个方面：</p>
+<ul>
+<li>
+<p>一个是 需要依赖cmdb 获取发版应用信息（类型/部署路径等）/主机信息，这个在发布系统的前端和后端都有cmdb的api 调用，这些都是http 连接</p>
+</li>
+<li>
+<p>一个是 发版系统前端 进行发版时，实时更新 应用版本对cmdb 的依赖，这是一个websocket接口，publih-web 与cmdb-server 直连</p>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../4.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/" class="btn btn-neutral float-right" title="publish功能介绍">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../2.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/" class="btn btn-neutral" title="测试环境"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2014-2016 <a href="https://wutongtree.com" target="_blank">wutongtree.com</a></p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../2.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../4.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

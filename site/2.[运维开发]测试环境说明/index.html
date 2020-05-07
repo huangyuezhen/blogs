@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>测试环境 - 运维开发文档资源</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6d4b\u8bd5\u73af\u5883";
+    var mkdocs_page_input_path = "2.[\u8fd0\u7ef4\u5f00\u53d1]\u6d4b\u8bd5\u73af\u5883\u8bf4\u660e.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 运维开发文档资源</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../1.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/">开发工具</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">测试环境</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">一些约定</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">前言：</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cmdb">cmdb</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#publish">publish</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">条件</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">其他</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dbms">dbms</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#watcher">watcher</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">前端</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">一些常见问题</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../3.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DCMDB%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/">cmdb功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../4.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/">publish功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../5.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%20%E4%B8%8EWatcher%E4%BB%8B%E7%BB%8D/">dbms& wathcer功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../7.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/">dbms部署</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">运维开发文档资源</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>测试环境</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">掌贝运维开发测试环境说明</h1>
+<h2 id="_2">一些约定</h2>
+<p>对于测试环境还有生产环境，我们按以下约定的目录去进行文件存放</p>
+<pre><code>如无特殊，我们的几大系统，都是按以下目录去存放对应的文件
+/data/logs/   项目的日志文件都在此目录
+/data/conf   项目的配置文件都在此处
+/data/svr  项目源码存放位置
+/data/sh   项目的脚本存放位置
+</code></pre>
+
+<h2 id="_3">前言：</h2>
+<ul>
+<li>
+<p>运维开发主要有三种运行，开发环境，测试环境，生产环境，都有对应的文档进行了介绍，下面主要是补充一下测试环境的账号信息等内容</p>
+</li>
+<li>
+<p>目前用于运维开发的测试主机：</p>
+</li>
+</ul>
+<p>10.10.50.30  root / pUaj3TBJm3sPhceb</p>
+<p>10.10.50.30 是运维开发的主要测试主机，包括cmdb watcher publish 三大系统的测试环境都是在这上面运行</p>
+<p>三大系统使用的测试环境数据库都是10.10.50.30 上的mysql 实例，账号 remote_test /remote_passwd ，mysql  root 账号在10.10.50.30主机上可以直连，没设置密码。</p>
+<p>10.10.50.30 上的redis 没有设置账号密码</p>
+<ul>
+<li>用于发布系统ssh 发版测试主机有：</li>
+</ul>
+<p>10.10.51.41 /  10.10.51.42 / 10.10.51.43 /  10.10.51.44</p>
+<p>共四台，此四台主机从 10.10.50.30 均可ssh 直连过去，root 账号密码也为 root / pUaj3TBJm3sPhceb</p>
+<h2 id="cmdb">cmdb</h2>
+<ul>
+<li>测试环境部署信息 参见wiki:</li>
+</ul>
+<p>http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=16944384</p>
+<ul>
+<li>
+<p>测试环境访问地址 http://10.10.50.30</p>
+</li>
+<li>
+<p>cmdb api-docs 相关信息 ：</p>
+</li>
+</ul>
+<p>http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=15761979</p>
+<p>api 文档路径 http://10.10.50.30/api/docs/cmdb-api-doc/</p>
+<p>cmdb-web</p>
+<p>链接后端url 修改地方 <code>config/dev.env.js</code></p>
+<h2 id="publish">publish</h2>
+<h3 id="_4">条件</h3>
+<p>publish-server 的部署主机需要与测试主机（我们目前用的是 10.10.51.41-44 ）之间需要是可以互相访问的，需同时满足两个条件：</p>
+<ul>
+<li>
+<p>部署主机的product 用户能够直接ssh 到测试主机的 product 用户下（即建立ssh 互信）</p>
+</li>
+<li>
+<p>测试主机 能够通过 部署主机的IP 进行拉包等操作</p>
+</li>
+</ul>
+<h3 id="_5">其他</h3>
+<p>在测试主机10.10.50.30 测试主机上，已建好的 python虚拟环境是 /data/svr/python36publishEncoding/bin/python</p>
+<p>可直接使用来运行publish-server</p>
+<ul>
+<li>测试环境部署信息，参见wiki:</li>
+</ul>
+<p>http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=21304910</p>
+<ul>
+<li>
+<p>测试环境访问地址 http://10.10.50.30:8070</p>
+</li>
+<li>
+<p>测试环境的publish 需要依赖于测试环境的cmdb（ http://10.10.50.30/）</p>
+</li>
+<li>
+<p>如果需要在测试环境下发版，需要在测试cmdb 上把对应的应用绑定到四台测试主机（10.1051.41-44）上，即可发版。</p>
+</li>
+<li>
+<p>发布系统对不符合版本规范（如：待发版本号低于回滚版本等），不强制要求，只弹框提醒发版者注意</p>
+</li>
+<li>
+<p>测试环境flower 访问地址：  http://10.10.50.30:5555</p>
+</li>
+</ul>
+<p>flower 是 celery 运行 tasks的一个监控工具，一个命令即可运行起来，无需嵌入代码</p>
+<p>详见https://flower-docs-cn.readthedocs.io/zh/latest/index.html</p>
+<p>生产由于一般通过log 形式即可判断 问题，所以flower 没安装在生产环境，主要安装在测试环境做tasks 调试监控使用</p>
+<h2 id="dbms">dbms</h2>
+<ul>
+<li>
+<p>测试环境部署信息 参见wiki: http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=22121566</p>
+</li>
+<li>
+<p>测试环境访问地址 http://192.168.1.15/dbms/</p>
+</li>
+</ul>
+<h2 id="watcher">watcher</h2>
+<ul>
+<li>
+<p>测试环境访问地址： http://10.10.50.30:8080/</p>
+</li>
+<li>
+<p>wathcer 测试环境下需要连接到 测试zabbix api (10.10.50.159)</p>
+</li>
+</ul>
+<p>zabbix-server 的部署与运行参见<a href="http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=28611629#zabbix部署与维护-3、部署zabbix-server">http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=28611629#zabbix%E9%83%A8%E7%BD%B2%E4%B8%8E%E7%BB%B4%E6%8A%A4-3%E3%80%81%E9%83%A8%E7%BD%B2zabbix-server</a></p>
+<ul>
+<li>需要连接 测试zabbix mysql  (10.10.50.159)</li>
+</ul>
+<pre><code> username: devops
+  password: yunnex
+  host: 10.10.50.159
+  port: 3306
+  database: zabbix
+</code></pre>
+
+<ul>
+<li>
+<p>测试用zabbix  http://10.10.50.159:4000/          <code>Admin/zabbix</code></p>
+</li>
+<li>
+<p>测试zabbix 所在主机 10.10.50.159    <code>root / pUaj3TBJm3sPhceb</code></p>
+</li>
+</ul>
+<p>watcher 前端会调用的一些api接口</p>
+<pre><code>//  product
+  cmdb_base_ = 'http://cmdb.ops.yunnex.com/api'
+  monitor_base_ = 'http://watcher.ops.yunnex.com/api'
+  zabbix_url_ = 'http://zabbix.ops.yunnex.com'
+  grafana_url_ = 'http://grafana.ops.yunnex.com/graph'
+  kibana_url_ = 'http://elk.ops.yunnex.com/app/kibana#'
+
+  // testing
+  cmdb_base_ = 'http://10.10.50.30/api'
+  monitor_base_ = 'http://10.10.50.30:8080/api'
+  zabbix_url_ = 'http://10.10.50.159:4000'
+  grafana_url_ = 'http://grafana.ops.yunnex.com/graph'
+  kibana_url_ = 'http://elk.ops.yunnex.com/app/kibana#'
+</code></pre>
+
+<p>watcher web urls修改位置： src/api/urls</p>
+<h2 id="_6">前端</h2>
+<h2 id="_7">一些常见问题</h2>
+<ol>
+<li>安装 node-sass 报错</li>
+</ol>
+<p>出现的问题：</p>
+<p><code>``
+   npm ERR! node-sass@4.9.3 postinstall:</code>node scripts/build.js`
+   npm ERR! Exit status 1
+   npm ERR!
+   npm ERR! Failed at the node-sass@4.9.3 postinstall script.
+   npm ERR! This is probably not a problem with npm. There is likely additional logging output above.</p>
+<p>npm ERR! A complete log of this run can be found in:
+   npm ERR!     C:\Users\87217\AppData\Roaming\npm-cache_logs\2020-04-22T10_04_59_535Z-debug.log
+   ```</p>
+<p>解决方法：</p>
+<p><code>解决方法： 
+   1、卸载node-sass 运行：npm uninstall node-sass 
+   2、重新安装指定的node-sass版本(安装失败的版本) 运行：npm install node-sass@4.9.3
+   3、如果还是安装不成功的话，或者安装太慢连接不上，使用一下淘宝镜像后重复1,2步骤，成功后再npm install 使用淘宝镜像运行：npm config set registry https://registry.npm.taobao.org</code></p>
+<ol>
+<li>依赖 安装没成功，需要手动安装</li>
+</ol>
+<pre><code>npm WARN ajv-keywords@3.2.0 requires a peer of ajv@^6.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN html-webpack-plugin@3.0.0 requires a peer of extract-text-webpack-plugin@^1.0.0 || ^2.0.0 || 3.0.0 || ^4.0.0-alpha.0 || ^4.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.12 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.12: wanted {&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;} (current: {&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;})
+
++ html-webpack-plugin@3.0.0
+added 6 packages from 5 contributors, removed 6 packages and updated 12 packages in 31.441s
+
+18 packages are looking for funding
+  run `npm fund` for details
+</code></pre>
+
+<ol>
+<li>npm run dev 报错</li>
+</ol>
+<p><code>Uncaught TypeError: Cannot assign to read only property 'exports' of object '#&lt;Object&gt;'
+       at Module.eval (BaseClient.js?7d9a:12)
+       at eval (BaseClient.js:42)
+       at Module../node_modules/webpack-dev-server/client/clients/BaseClient.js (app.js:13726)
+       at __webpack_require__ (app.js:833)
+       at fn (app.js:130)
+       at Module.eval (SockJSClient.js?0a33:26)
+       at eval (SockJSClient.js:138)
+       at Module../node_modules/webpack-dev-server/client/clients/SockJSClient.js (app.js:13738)
+       at __webpack_require__ (app.js:833)
+       at fn (app.js:130)
+   localhost/:1 Unchecked runtime.lastError: The message port closed before a response was received.</code></p>
+<ol>
+<li>需要依赖 python2.7 ,报错</li>
+</ol>
+<pre><code>gyp verb `which` succeeded python D:\Program Files\python3.6\python.EXE
+gyp ERR! configure error
+gyp ERR! stack Error: Command failed: D:\Program Files\python3.6\python.EXE -c import sys; print &quot;%s.%s.%s&quot; % sys.version_info[:3];
+gyp ERR! stack   File &quot;&lt;string&gt;&quot;, line 1
+gyp ERR! stack     import sys; print &quot;%s.%s.%s&quot; % sys.version_info[:3];
+gyp ERR! stack                                ^
+gyp ERR! stack SyntaxError: invalid syntax
+gyp ERR! stack
+</code></pre>
+
+<p>解决方法： 安装python2.7 并添加到环境变量， 使得命令python 指向python2.7即可</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../3.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DCMDB%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/" class="btn btn-neutral float-right" title="cmdb功能介绍">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../1.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/" class="btn btn-neutral" title="开发工具"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2014-2016 <a href="https://wutongtree.com" target="_blank">wutongtree.com</a></p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../1.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../3.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DCMDB%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>开发工具 - 运维开发文档资源</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5f00\u53d1\u5de5\u5177";
+    var mkdocs_page_input_path = "1.[\u8fd0\u7ef4\u5f00\u53d1]\u5f00\u53d1\u5de5\u5177\u914d\u7f6e.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 运维开发文档资源</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">开发工具</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">前言</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">运维开发相关的系统</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pythonvirtualenv">Python虚拟环境virtualenv配置</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#linuxwslvirtualenv">Linux/WSL的virtualenv配置</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#windowsvirtualenv">Windows的virtualenv配置</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">命令说明</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vs-code">VS Code运行环境配置</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-widows-vs-code">1.下载 widows 版的 vs code</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#vs-code_1">VS Code安装</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#win10-wsl">win10 搭建wsl</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-python">2. 安装python</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#windows-python">windows安装 python</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#ubuntuwsl-python">ubuntu(WSL) 安装python</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3pip">3.安装pip</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#windowspip">windows安装pip</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#ubuntu-pip">ubuntu 安装pip</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pip">pip配置国内源</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-git">4.安装  git 客户端</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#windows-git">windows 安装 git</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#ubuntu-git">ubuntu 安装git</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#51-python">5.1 安装python等插件</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#52">5.2 配置运行调试</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#53-vs-code">5.3 附录: VS Code常用热键</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6">6.配置前端运行环境</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#61nodejs">6.1下载node.js ,按步骤进行安装</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#62vue-eslint">6.2安装vue /eslint 插件</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#7remote-wslwindows-10">7.配置Remote WSL(Windows 10)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#71-remote-wsl">7.1 安装Remote WSL插件</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#72-wsl">7.2 切换到WSL环境</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#73-wsl">7.3  WSL环境安装插件</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#8-remote-ssh">8. 配置Remote SSH</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#81-windowsopenssl">8.1 在Windows上安装OpenSSL</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#82-linux">8.2 远端Linux机器要求</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#83-vscoderemote-ssh">8.3 在vscode里配置插件Remote - SSH</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#jupyter">Jupyter环境配置</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#jupyter_1">安装Jupyter</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jupyter_2">启动Jupyter</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jupyter_3">配置Jupyter</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../2.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/">测试环境</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../3.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DCMDB%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/">cmdb功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../4.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/">publish功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../5.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%20%E4%B8%8EWatcher%E4%BB%8B%E7%BB%8D/">dbms& wathcer功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../7.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/">dbms部署</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">运维开发文档资源</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>开发工具</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">掌贝运维开发环境配置与运行</h1>
+<h2 id="_2">前言</h2>
+<h3 id="_3">运维开发相关的系统</h3>
+<p>在我们开发的这几个系统： cmdb /watcher/publish 与及基于开源项目的dbms , 采用的后端开发语言都是python, 前端也主要是以vue +js 为主。在运维开发中，主要涉及到三类环境：</p>
+<ul>
+<li>
+<p>开发环境</p>
+</li>
+<li>
+<p>测试环境</p>
+</li>
+<li>
+<p>生产环境</p>
+</li>
+</ul>
+<p>测试与及生产环境的部署之前已有相关的wiki 进行介绍，那么现在主要给大家分享下开发环境的配置。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>前端or后端</th>
+<th>开发语言and 框架</th>
+<th>python/nodejs版本</th>
+<th>是否需要依赖linux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmdb-server</td>
+<td>后端</td>
+<td>python   and tornado</td>
+<td>python3.6.2</td>
+<td>否，windows/linux 均可运行</td>
+</tr>
+<tr>
+<td>cmdb-web</td>
+<td>前端</td>
+<td>js      and  vue +element ui</td>
+<td><strong>nodejs 8.8.0 32位</strong></td>
+<td>否，windows借助node.js 可运行</td>
+</tr>
+<tr>
+<td>monitor-center</td>
+<td>后端</td>
+<td>python   and tornado</td>
+<td>python3.6.2</td>
+<td>否，windows/linux 均可运行</td>
+</tr>
+<tr>
+<td>monitor-web</td>
+<td>前端</td>
+<td>js      and  vue +element ui</td>
+<td>nodejs 12.16.0 64位</td>
+<td>否，windows借助node.js 可运行</td>
+</tr>
+<tr>
+<td>publish-server</td>
+<td>后端</td>
+<td>python   and tornado+ansible+celery</td>
+<td>python3.6.2</td>
+<td><strong>是，windows 不能独立运行</strong></td>
+</tr>
+<tr>
+<td>publish-web</td>
+<td>前端</td>
+<td>js      and  vue +element ui</td>
+<td>nodejs 12.16.0 64位</td>
+<td>否，windows借助node.js 可运行</td>
+</tr>
+<tr>
+<td>dbms</td>
+<td>前后端不分离</td>
+<td>python and django</td>
+<td>python3.6.2</td>
+<td>否，windows/linux 均可运行</td>
+</tr>
+</tbody>
+</table>
+<p>市面上开发所用的IDE 有很多， 比如pycharm 专门针对 python语言的一款IDE,还有 微软新开放的visual studio code。</p>
+<p>运维开发工具的选择</p>
+<p>推荐使用<code>Visual  Studio Code</code>和<code>Jupyter</code>作为日常的项目开发与脚本编写工具。</p>
+<p><strong>1) Pycharm</strong></p>
+<p><strong>兼容性：</strong>Windows、Linux、Mac OS</p>
+<p>优点：</p>
+<ul>
+<li>
+<p>集成单元测试，</p>
+</li>
+<li>
+<p>代码检测，</p>
+</li>
+<li>
+<p>集成版本控制，</p>
+</li>
+<li>
+<p>代码重构工具，</p>
+</li>
+<li>
+<p>各种导航工具以及期望的突出显示和自动完成功能</p>
+</li>
+<li>远程调试</li>
+</ul>
+<p>缺点：  需要付费，网上的免费破解版，会时不时被封，需要重新找新的破解码</p>
+<p><strong>2) Visual  Studio Code(推荐)</strong></p>
+<p><strong>兼容性：</strong>Windows、Linux、Mac OS</p>
+<blockquote>
+<p><em>&ldquo;Visual Studio Code is an editor for any developer, no matter what programming language you use.&rdquo;</em>
+<strong><em>“Visual Studio Code是任何开发人员的编辑器，无论您使用何种编程语言。”</em></strong></p>
+</blockquote>
+<p>优点：</p>
+<ul>
+<li>轻便灵活，插件式的设计，插件丰富，几乎pycharm 上提供的功能都可通过插件来进行支持</li>
+<li>支持多种语言，js +vue ,python  ，java 等</li>
+<li>结合 windows下的powshell ,支持命令行工具</li>
+<li>配置后远程调试非常方便，并且和windwos自带的linux紧密结合。</li>
+<li>开源免费，使用者众多，出现问题 社区支持给力</li>
+</ul>
+<p>缺点：</p>
+<p>​    <code>vs code</code>由于支持了多语言，配置相对pycharm来说稍为复杂一些。对于大型的项目开发或者Debug环境，需要编写指定的配置文件，如python 项目的 launch.json。</p>
+<p><strong>3) Jupyter Notebook(推荐)</strong></p>
+<p><code>Jupyter Notebook</code> 的本质是一个 Web 应用程序，便于创建和共享文学化程序文档，支持实时代码，数学方程，可视化和 markdown。 用途包括：数据清理和转换，数值模拟，统计建模，机器学习等等，目前在学术界和机器学习方面非常流行，适用于我们平时的Python学习和学习笔记使用。</p>
+<p>一般在本机安装直接运行，或者使用内网公共Jupyter。</p>
+<ul>
+<li>测试环境地址：http://10.10.50.30:7080/tree， 密码：yunnex</li>
+</ul>
+<p><strong>结论</strong></p>
+<p>基于以上的对比， 我们的前端和后端项目采用的都是 <code>visual  studio  code</code>下文简称为<code>vs code</code>） 作为IDE。</p>
+<h2 id="pythonvirtualenv">Python虚拟环境virtualenv配置</h2>
+<p>virtualenv 是个python 的环境管理工具，在对多项目开发时，由于不同的项目可能对同一个包的版本依赖不同，如果多个项目都使用同一个 python 的sitepackages 可能会导致冲突，因而需要按分项目python 包进行管理。</p>
+<p>virtualenv 就是这样一个工具，使用同一个 python 解释器，但是使用不同的库。</p>
+<p>virtualenv 本质上也是一个 python 库，安装方法同普通的python 包</p>
+<pre><code>#切换到目标python 版本下的pip，指定当前最新的virtualenv版本
+pip install virtualenv==20.0.18
+</code></pre>
+
+<p>从2020年开始，virtualenv 直接从原来的16.x 版本 一下子跳到了20.x 版本，并且去掉了 &ndash;no-sitepackages 这个参数，直接默认有这个参数，也就是 16.x及之前的版本是需要带&ndash;no-sitepackages 才可以初始化一个干净的python环境，从20.X版本 这个参数直接是默认的了，无需带上。</p>
+<h3 id="linuxwslvirtualenv">Linux/WSL的virtualenv配置</h3>
+<pre><code class="bash">## 安装virtualenv(基础)
+# 构建虚拟环境
+pip3 install virtualenv
+
+# 进入你想要构建的路径-
+cd   /mmt/f/yunex/env
+# -p指定哪个python  紧跟的是虚拟环境的名称
+virtualenv -p python3 py3-publish
+
+ # 安装requirements.txt 到指定虚拟环境
+ # 下面这个是以publish-server为例，先进入到代码目录，激活python3.6环境，然后安装
+ cd  /mmt/f/yunex/publish-server
+ source /mnt/f/yunex/env/py3-publish/bin/activate
+ pip3 install -r requirements.txt
+ #安装完成后，退出当前的虚拟环境
+ deactivate 
+</code></pre>
+
+<pre><code class="bash">## 安装virtualenv后，可以继续安装virtualenvwrapper管理Python虚拟环境
+pip3 install virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3 #配置依赖的python
+export WORKON_HOME=/mnt/f/yunex/env #设定虚似环境集中目录
+mkvirtualenv --python=/usr/bin/python3 publish-server #创建虚拟环境
+## 开始使用
+workon #查看当前的虚拟环境目录
+workon publish-server #切换到虚拟环境
+python -V
+cd /mmt/f/yunex/publish-server #此时可以安装项目的依赖包，以publish-server为例
+pip3 install -r requirements.txt #安装依赖包
+deactivate #退出虚拟环境
+## 删除安装
+rmvirtualenv venv #删除虚拟环境
+</code></pre>
+
+<h3 id="windowsvirtualenv">Windows的virtualenv配置</h3>
+<p>在你想要的目录下虚拟出 python 环境</p>
+<pre><code># 下面的例子里，因为是在 windows开发环境下，为方便统一管理
+#我直接在 项目源码的根目录下 虚拟了对应的虚拟环境， 如项目 cmdb-server ,直接在根目录下虚拟python36cmdb
+# 然后在 .gitignore文件里增加 一行：  python36cmdb/* ,让git 不追踪这个文件的变化
+
+#虚拟出python 环境
+virtualenv python36cmdb
+
+#采用虚拟环境的pip 安装requirements.txt
+.\python36cmdb\Scripts\pip-3.6.exe install -r .\requirements.txt
+
+这样子 cmdb的python环境就虚拟好了
+</code></pre>
+
+<p>再回到vs code 下的配置， 在/.vscode/settings.json  文件里添加进新虚拟出的python 路径即可</p>
+<pre><code class="json">{  
+
+  &quot;python.pythonPath&quot;: &quot;python36cmdb\\Scripts\\python.exe&quot; 
+
+}
+</code></pre>
+
+<p>如果当前vs code 的项目里，没有/.vscode/settings.json 这个文件，按一下F5, vs code 就会提示你选择python 解析器，选择完成后就会自动生成该文件。</p>
+<h3 id="_4">命令说明</h3>
+<pre><code>• mkvirtualenv wxhpython01：创建运行环境wxhpython01
+• workon wxhpython01: 工作在 zqxt 环境 或 从其它环境切换到 wxhpython01环境
+• deactivate: 退出终端环境
+• rmvirtualenv ENV：删除运行环境ENV
+• mkproject mic：创建mic项目和运行环境mic
+• mktmpenv：创建临时运行环境
+• lsvirtualenv: 列出可用的运行环境
+</code></pre>
+<p>lssitepackages: 列出当前环境安装了的包</p>
+<h2 id="vs-code">VS Code运行环境配置</h2>
+<p><strong>开发环境的三种模式</strong></p>
+<p>由于有部分类库，不支持windows 下环境运行，如 ansible kafka 等，那么开发环境有三种方式可选择：</p>
+<ul>
+<li>
+<p>windows  vs code  + 远程运行调试工具（remote ssh ）+ 本地虚拟linux或远程服务器 （<strong>推荐</strong>）</p>
+</li>
+<li>
+<p>win10 系统有个新出的WSL(windows subsystem for  linux), 开启该功能 安装ubuntu 桌面系统，在ubuntu系统下配置vs  code 等开发环境 （<strong>一般</strong>）</p>
+</li>
+<li>
+<p>win10 开启 wsl,ubuntu只安装python 与及项目的requirements.txt，vs code 在win10 下通过remote wsl </p>
+</li>
+</ul>
+<p>连接，并在本地win系统开发调试 （<strong>推荐</strong> ）</p>
+<p>（一般情况这个是够用的，但是发布系统 需要拿包，四台测试主机10.10.51.41-44 与我们办公网络 没有完全双向打通，所以这种模式，在10.10.51.41-4 主机从我们办公主机上会拉取不到包）</p>
+<p><strong>结论：</strong></p>
+<p>由于我们的cmdb-server/cmdb-web  watcher-server/watcher-web  publish-web 都是只需要在win 环境下的vs code 即可运行，只有publish-server需要依赖 linux环境，为方便统一，比较推荐第三种开发方式，下文也主要采用此种方式来解决 publish-server 对linux 的依赖。</p>
+<h3 id="1-widows-vs-code">1.下载 widows 版的 vs code</h3>
+<h4 id="vs-code_1">VS Code安装</h4>
+<p>vs code 官网下载地址：https://code.visualstudio.com/Download</p>
+<p>按步骤安装即可</p>
+<h4 id="win10-wsl">win10 搭建wsl</h4>
+<p>win10 搭建 WSL 的过程请参见：http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=26673982</p>
+<h3 id="2-python">2. 安装python</h3>
+<h4 id="windows-python">windows安装 python</h4>
+<p>下载地址：https://www.python.org/downloads/</p>
+<p>选择3.6.X 版本(不建议安装最新版的3.8，与现有代码有部分兼容问题)，并把路径添加到 环境变量</p>
+<p>检验安装是否成功： </p>
+<p>调出cmd  执行 python , 如果提示找不到命令，先看看环境变量是不是没配置成功</p>
+<p><img alt="image-20200420135821687" src="http://res-doc.yunnex.com/picgo/image-20200420135821687.png" /></p>
+<h4 id="ubuntuwsl-python">ubuntu(WSL) 安装python</h4>
+<pre><code class="powshell">apt install python3.6
+
+验证是否成功
+product@DESKTOP-VAL3SFG:~$ python3
+Python 3.6.9 (default, Nov  7 2019, 10:44:02)
+[GCC 8.3.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+</code></pre>
+
+<p>提示: 使用windows10的WSL时，设置ssh开始启动的方法:</p>
+<p>win10的开始-运行里面(或Win + r键)里， 输入shell:startup打开启动文件夹，新增startservice.vbs脚本放进去</p>
+<pre><code class="powershell">[C:\Users\admin1\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup]$ type wsl-startservice.vbs
+Set ws = WScript.CreateObject(&quot;WScript.Shell&quot;)
+ws.run &quot;ubuntu run sudo service ssh restart&quot;, vbhide
+</code></pre>
+
+<h3 id="3pip">3.安装pip</h3>
+<h4 id="windowspip">windows安装pip</h4>
+<p>python3以上的版本，安装了python 后都会有自带的pip,不用再额外安装，验证</p>
+<pre><code class="powershell">PS F:\yunex\cmdb-server&gt; pip -V
+pip 18.1 from d:\program files\python3.6\lib\site-packages\pip (python 3.6)
+</code></pre>
+
+<h4 id="ubuntu-pip">ubuntu 安装pip</h4>
+<pre><code class="powershell">apt install python3-pip
+</code></pre>
+
+<h4 id="pip">pip配置国内源</h4>
+<pre><code># cat ~/.pip/pip.conf
+[global]
+index-url=https://mirrors.aliyun.com/pypi/simple
+</code></pre>
+
+<h3 id="4-git">4.安装  git 客户端</h3>
+<h4 id="windows-git">windows 安装 git</h4>
+<p>下载地址https://git-scm.com/downloads,  按步骤点默认选项安装即可</p>
+<p>配置git 用户名称</p>
+<pre><code class="shell">设置全局用户名，如果创建后需要修改，也是这个命令，直接覆盖原来的配置
+git config --global user.name &quot;huangyuezhen&quot;
+git config --global  user.email &quot;huangyuezhen@yunnex.com&quot;
+
+为单个仓库设置 Git 用户名, 去掉上面的 global 即可，单个仓库的独立配置会覆盖global配置
+1.打开 Git Bash。
+2.将当前工作目录更改为您想要在其中配置与 Git 提交关联的名称的本地仓库。
+3.设置 Git 用户名：
+    $ git config user.name &quot;huangyuezhen&quot;
+
+查看全局设置
+PS C:\Users\87217&gt; git config --global  -l   
+user.name=huangyuezhen
+user.email=huangyuezhen@yunnex.com
+
+查看某个仓库的设置
+git config -l
+</code></pre>
+
+<p>执行下 git pull 等命令，会弹出框要求输入 git仓库的账号密码， 账号和密码会被保存到 windows 下的“凭据管理器”，修改或删除都需要进入到这里。</p>
+<p><img alt="image-20200420135909430" src="http://res-doc.yunnex.com/picgo/image-20200420135909430.png" /></p>
+<p><strong>注意点：</strong></p>
+<ul>
+<li>
+<p>git 仓库的账号密码， 和 user.name 的用户名称可以不一致，</p>
+</li>
+<li>
+<p>user.name  才是真正记录log 对应的 用户，弹出输出的账号密码只是作为与远程仓库连接的凭证，</p>
+</li>
+<li>
+<p>当只输入弹出输出的账号密码， 未设置  global  user.name 或仓库独立的 user.name 时，会提示需要设置user.name 和user.email 信息,如下</p>
+</li>
+</ul>
+<p>```powershell
+  S F:\yunex\publish-web&gt; git commit -m &ldquo;test&rdquo;</p>
+<p>*** Please tell me who you are.</p>
+<p>Run</p>
+<pre><code>git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+</code></pre>
+<p>to set your account&rsquo;s default identity.
+  Omit &ndash;global to set the identity only in this repository.</p>
+<p>fatal: unable to auto-detect email address (got &lsquo;87217@DESKTOP-VAL3SFG.(none)&rsquo;)
+  ```</p>
+<h4 id="ubuntu-git">ubuntu 安装git</h4>
+<p>ubuntu发行版一般会自带这些常用的工具，不用额外安装</p>
+<p>验证：</p>
+<p>```power shell
+product@DESKTOP-VAL3SFG:~$ git &ndash;version
+git version 2.17.1</p>
+<pre><code>
+### 5.配置 vs code的python 运行环境
+
+打开 vs code 后，快捷键 ctrl + “~” 调出 powershell 窗口，检验python环境是否安装成功：
+
+```powershell
+PS C:\Users\87217&gt; python
+Python 3.6.8rc1 (v3.6.8rc1:cc3e73212a, Dec 12 2018, 00:15:46) [MSC v.1900 64 bit (AMD64)] on win32
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; 
+
+PS C:\Users\87217&gt; pip -V
+pip 18.1 from d:\program files\python3.6\lib\site-packages\pip (python 3.6)
+
+PS F:\yunex\publish-server&gt; git --version
+git version 2.26.0.windows.1
+</code></pre>
+
+<h4 id="51-python">5.1 安装python等插件</h4>
+<p>该插件支持 python  语法高亮，语法检测，自动补全、调试、代码格式化、单元测试等功能</p>
+<p>侧边栏找到最下面的“方形积木 ” Extensions&ndash;&gt; 搜索框搜索 python &ndash;&gt;找到后点击安装&ndash;&gt;&gt;安装完后选择“重新加载”或手动重启VS Code即可</p>
+<p><img alt="image-20200420135923471" src="http://res-doc.yunnex.com/picgo/image-20200420135923471.png" /></p>
+<p>推荐安装的插件如下:</p>
+<ul>
+<li>Python插件       VScode自带的官方插件</li>
+<li>
+<p>vscode-icons    文件图标集</p>
+</li>
+<li>
+<p>Guides：          将缩进线显示为红色</p>
+</li>
+<li>
+<p>filesize             一款在左下角显示文件大小的插件</p>
+</li>
+<li>
+<p>Bracket Pair Colorizer        括号颜色</p>
+</li>
+<li>
+<p>Anaconda Extension Pack 自动补全anaconda包中的属性名称</p>
+</li>
+<li>
+<p>Code Spell Checker            拼写检查</p>
+</li>
+<li>GitLens        打开代码后，在代码块上会显示 最后一次的commit信息， 支持多窗口对比查看本地修改或历史修改</li>
+<li>Git  History 支持file  或者的line 的commit 历史信息查看</li>
+</ul>
+<p>在vs code 的power shell可以使用git 的命令行执行任务的提交，或者也可找找支持图形化操作的插件，</p>
+<h4 id="52">5.2 配置运行调试</h4>
+<p>打开项目文件或者编辑单个python脚本后，按F5即可运行程序，如需debug ,直接在代码里 打断点就行。</p>
+<p>一般建议在项目目录里进行调试的设置，配置文件在VS Code当前的工作目录下的<code>/.vscode</code>下，没有找到也没关系，等会配置时会自动创建。</p>
+<p><code>launch.json</code>文件，它的位置一般在VS Code当前的工作目录下的<code>/.vscode/launch.json</code>。没有找到也没关系，等会配置时会自动创建。 </p>
+<p>点击File，打开项目目录或工作目录后，打开项目入口文件(如publish-server.py)，按F5进行运行调试。第一次运行时，需要点击左侧的run图标创建launch.json文件。</p>
+<p><img alt="image-20200426144702289" src="http://res-doc.yunnex.com/picgo/image-20200426144702289.png" /></p>
+<p>对于项目，选择Module类型，然后输入模块名，模块名与工作目录下的publish-server.py 入口文件名一致，填入&rdquo;publish-server”。</p>
+<p><img alt="image-20200420140020272" src="http://res-doc.yunnex.com/picgo/image-20200420140020272.png" /></p>
+<p>完成后，vs code 会自动在项目目录下的<code>.vscode/launch.json</code>文件增加以下配置</p>
+<pre><code class="json"> # launch.json
+ {
+        &quot;name&quot;: &quot;Python: Module&quot;,
+          &quot;type&quot;: &quot;python&quot;,
+          &quot;request&quot;: &quot;launch&quot;,
+          &quot;module&quot;: &quot;publish-server&quot; #该名称一定需要 跟工作目录下的publish-server.py 入口文件一致
+    }
+</code></pre>
+
+<p>settings.json 文件的作用是， 当存在多个python 的运行环境，vs code 不知道要选定哪个python 来作为本项目的python 解释器，那么就需要在settings.json 文件中去指定python解释器的路径。</p>
+<p>切换到虚拟环境下, 使用“which python”命令获取虚拟环境的python路径，然后配置到项目目录下的<code>.vscode/settings.json</code>。</p>
+<pre><code class="shell">{
+    &quot;python.pythonPath&quot;: &quot;/mnt/d/dev/envs/publish/bin/python&quot;,
+    &quot;vsintellicode.modelDownloadPath&quot;: &quot;&quot;,
+    &quot;python.jediEnabled&quot;: false
+}
+</code></pre>
+
+<p>此时再按F5时就可以直接运行程序。</p>
+<p><strong>到以上步骤， cmdb-server, watcher, dbms 已经可以在windows 下的vs code 下按照各个server 的REAME操作跑起来了。</strong></p>
+<p><strong>下面介绍的方法主要是针对 publish-server 对ansible 有依赖 ，但 ansible 在windows运行时不支持，需要需要构建linux 的运行环境</strong></p>
+<h4 id="53-vs-code">5.3 附录: VS Code常用热键</h4>
+<p><strong>使用VScode编辑</strong></p>
+<p>F1/Ctrl+Shit+P万能键，谁用谁知道</p>
+<p>Ctrl+P：文件切换</p>
+<p>Ctrl+空格：自动提示</p>
+<p>F12/Ctrl+左键：跳转到定义</p>
+<p>Shift+F12：预览定义</p>
+<p>Ctrl+G：跳转行号</p>
+<p>Ctrl+/：注释切换</p>
+<p>Alt+↑↓：整行上下移动</p>
+<p>Ctrl+↑↓：编辑器垂直滚动条上下移动，光标不动</p>
+<p>Ctrl+Backspace/Delete：整词/连续空白删除</p>
+<p>Ctrl+→←：光标整词移动</p>
+<p>Ctrl+F查找/Ctrl+Shift+F在文件中查找</p>
+<p>Alt+Shift+F，vscode就会调用autopep8自动格式化代码</p>
+<p>Ctrl+鼠标左键点函数名跳转，或在类名上按F12</p>
+<p>变量上按F2可实现重命名变量</p>
+<p><strong>调试代码:</strong></p>
+<p>行号左边点击可设置断点</p>
+<p>F5：调试/继续，</p>
+<p>F10：单步跳过，</p>
+<p>F11：单步进入，</p>
+<p>Shift+F11：跳出。</p>
+<p>F9：切换断点</p>
+<p><strong>使用Jupyter:</strong></p>
+<p>创建Noterbook:</p>
+<p>​    Ctrl+Shift+P输入“python:create”创建一个新的Notebook.</p>
+<p>视图:</p>
+<p>​    Ctrl+Shift+P输入“python:switch&rdquo; </p>
+<p>命令模式(蓝色)和编辑模式(绿色)</p>
+<p>​    在命令模式下(小写):</p>
+<p>​    Ctrl + Enter：运行当前单元格。</p>
+<p>​    Shift + Enter：运行当前单元格，并跳到下一单元格。</p>
+<p>​    Alt + Enter：运行当前单元格，并在下方创建一个单元格。</p>
+<p>​    Ctrl + M 切换成 MarkDown 模式</p>
+<p>​    Ctrl + Y 切换成代码模式</p>
+<p>​    Enter：切换到编辑模式。</p>
+<p>​    Esc：切换到命令模式。</p>
+<p>​    双击D：删除当前单元格。</p>
+<p>​    A：在上方创建一个单元格。</p>
+<p>​    B：在下方创建一个单元格。</p>
+<p>​    L：为当前单元格添加行号。</p>
+<p>​    TAB：代码补全</p>
+<h3 id="6">6.配置前端运行环境</h3>
+<h4 id="61nodejs">6.1下载node.js ,按步骤进行安装</h4>
+<p>node.js 是个基于 chrome v8 引擎的js 运行时工具，在前端开发时，可以用来调试代码。</p>
+<p>node.js 的安装包中会带有npm 工具，npm 是个类似于python 的pip ,主要是用来安装包依赖的。</p>
+<p>由于我们具有多项目，而各项目间对node.js的版本不同，因而有了个windows 下nodejs 版本管理工具 nvm。</p>
+<p><strong>windows 下 node.js 多版本管理工具nvm</strong></p>
+<p>nvm 下载地址
+https://github.com/coreybutler/nvm-windows/releases</p>
+<p>安装nvm前一定要把原来的<strong>node.js 全部卸载，并把文件夹清理干净</strong>。</p>
+<p>常用命令</p>
+<pre><code>设置国内镜像
+nvm node_mirror  https://npm.taobao.org/mirrors/node/
+nvm npm_mirror https://npm.taobao.org/mirrors/npm/
+
+查找帮助
+nvm  help
+
+安装node
+nvm install &lt;version&gt; [32|64]
+nvm install 12.3.1
+
+列举
+nvm list 
+
+切换版本
+nvm use 12.3.1 
+
+卸载node
+nvm uninstall 12.3.1
+</code></pre>
+
+<p>在运行 cmdb-web 项目时，切换到 8.8.0 32位的版本：</p>
+<pre><code>PS F:\yunex\cmdb-web&gt; nvm list
+  * 12.16.0 (Currently using 64-bit executable)
+    8.8.0
+PS F:\yunex\cmdb-web&gt; nvm use 8.8.0 32
+Now using node v8.8.0 (32-bit)
+</code></pre>
+
+<p>在运行 publish-web /monitor-web 项目时，切换到 12.16.0 64 位版本</p>
+<pre><code>PS F:\yunex\publish-web&gt; nvm use 12.16.0 64
+Now using node v12.16.0 (64-bit)
+</code></pre>
+
+<p>然后根据各个项目的readme 进行包的安装，启动等。</p>
+<h4 id="62vue-eslint">6.2安装vue /eslint 插件</h4>
+<p>方法同上文， 点击侧边栏的“方形积木”，搜素输入 进行安装即可，对eslint ,Vetur 进行安装</p>
+<p><img alt="image-20200420140033296" src="http://res-doc.yunnex.com/picgo/image-20200420140033296.png" /></p>
+<p><strong>至此前端的运行环境配置完毕</strong></p>
+<p>根据各前端的readme.md 进行包的安装，运行npm run dev 即可运行起前端项目</p>
+<pre><code class="powershell">npm install
+npm run dev
+</code></pre>
+
+<h3 id="7remote-wslwindows-10">7.配置Remote WSL(Windows 10)</h3>
+<p>Remote WSL是个连接本地WSL 的插件，二者同出自 微软，所以二者的无缝连接体验还是比较好的。</p>
+<ul>
+<li>支持在windows 环境下运行vs code ,</li>
+<li>
+<p>windows vs code  下开发，修改代码</p>
+</li>
+<li>
+<p>可以调用ubuntu 的运行环境来运行调试，</p>
+</li>
+</ul>
+<h4 id="71-remote-wsl">7.1 安装Remote WSL插件</h4>
+<p>打开 vs code ,点击侧边栏的“方形积木”（Extensions），搜索<strong>Remote Development</strong>进行安装。</p>
+<p><img alt="image-20200426153626036" src="http://res-doc.yunnex.com/picgo/image-20200426153626036.png" /></p>
+<h4 id="72-wsl">7.2 切换到WSL环境</h4>
+<p>上面安装好后，点击左下角的绿色图标切换到WSL。</p>
+<p><img alt="image-20200426153836058" src="http://res-doc.yunnex.com/picgo/image-20200426153836058.png" /></p>
+<p>可以看到底部的变成WSL ，说明已经是在WSL的环境下</p>
+<p><img alt="image-20200420140114021" src="http://res-doc.yunnex.com/picgo/image-20200420140114021.png" /></p>
+<h4 id="73-wsl">7.3  WSL环境安装插件</h4>
+<p>在 WSL:Ubuntu 环境下，部分插件需要运行在Linux下，在界面上点击将自动进行安装，安装完成需要reload一下VS Code。</p>
+<p><img alt="image-20200420140125856" src="http://res-doc.yunnex.com/picgo/image-20200420140125856.png" /></p>
+<p>WSL下的调试配置，与Windows下相同，请见5.2节中关于launch.json和settings.json的配置。</p>
+<p>一般来说 依赖于 linux 系统的publish-server 在安装了以上的WSL 之后，运行就没问题了。但对于与环境严重依赖的项目来说，WSL难以单独运行起来，例如发布系统的业务主机(在测试环境)需要到Publish Server(Windows)下载包文件，如果WSL与业务主机不在同一个环境，调试程序的运行就相当困难了。在本地Windows上调试远程Linux项目则需要使用另一个功能 – Remote SSH。</p>
+<h3 id="8-remote-ssh">8. 配置Remote SSH</h3>
+<p>remote ssh 是何方神圣？ 它就是个 vs code 的一个插件(2019年5月推出)，安装方法同上，在<code>Remote Development</code>插件中已包含。</p>
+<p>与WSL不同，Remote SSH需要与远程的Linux建立免密登录。</p>
+<h4 id="81-windowsopenssl">8.1 在Windows上安装OpenSSL</h4>
+<ul>
+<li>
+<p>下载OpenSSL</p>
+<p>https://openssh.en.softonic.com/, 下载并解压到本地目录，并添加到系统路径。</p>
+<p>注意，虽然Windows自带SSL(应用和功能 -&gt; 可选功能 -&gt; Openssh客户端)，但旧版本在使用时会有问题。</p>
+</li>
+<li>
+<p>生成密钥</p>
+<pre><code>```
+D:\Tools\OpenSSH-Win64\ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh
+```
+</code></pre>
+</li>
+<li>
+<p>修正生成的密钥权限</p>
+<ul>
+<li>打开目录C:\Users\admin1.ssh, 右键id_rsa-remote-ssh-&gt;属性-&gt;安全-&gt;高级<ul>
+<li>更改所有者为本人</li>
+<li>取消继承，只保留本人，并设置本人权限为Full。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>SSL登录免密测试</p>
+<p>把~/.ssh/id_rsa-remote-ssh.pub的内容添加到目标机器的~/.ssh/authorized_keys里</p>
+<p>在本地powershell中测试: ssh root@10.10.50.30 -i ~/.ssh/id_rsa-remote-ssh</p>
+</li>
+</ul>
+<h4 id="82-linux">8.2 远端Linux机器要求</h4>
+<p>通常是要求CentOS7或以上。</p>
+<ul>
+<li>https://code.visualstudio.com/docs/remote/ssh</li>
+</ul>
+<p>如果是centos6，需要升级包:</p>
+<ul>
+<li>https://code.visualstudio.com/docs/remote/linux#_updating-glibc-and-libstdc-on-rhel-centos-6</li>
+</ul>
+<h4 id="83-vscoderemote-ssh">8.3 在vscode里配置插件Remote - SSH</h4>
+<ul>
+<li>
+<p>右键Remote-ssh插件，进入扩展设置，在&rdquo;Remote.SSH: Path&rdquo;中指定ssh的路径。&rdquo;D:\Lawrence\Tools\OpenSSH-Win64\ssh.exe&rdquo;</p>
+</li>
+<li>
+<p>确保Remote.SSH:Show Login Terminal是已勾上。</p>
+</li>
+<li>
+<p>VSCode上ctrl+shift+p, 开始remote连接远程服务器，连接成功后安装Python等控件到远程机器。</p>
+</li>
+<li>
+<p>VSCode对远程机器的定义示例如下:</p>
+</li>
+</ul>
+<pre><code>Host 10.10.50.30
+ HostName 10.10.50.30
+ User root
+ IdentityFile ~/.ssh/id_rsa-remote-ssh
+</code></pre>
+
+<h2 id="jupyter">Jupyter环境配置</h2>
+<h3 id="jupyter_1">安装Jupyter</h3>
+<p>以管理员权限打开cmd</p>
+<pre><code class="powershell">pip install jupyter_contrib_nbextensions
+jupyter contrib nbextension install --user
+pip install jupyter_nbextensions_configurator
+</code></pre>
+
+<h3 id="jupyter_2">启动Jupyter</h3>
+<pre><code class="powershell">C:\Python36\Scripts\jupyter-notebook.exe
+</code></pre>
+
+<p>在打开的浏览器界面上，建议在Nbextensions页上勾选上所需的功能：
+    ○ Table of Contents(2) 目录功能
+    ○ Collapsible headings 折叠标题
+    ○ Notify 通知机制，跑一些耗时较久的任务，完成后通知
+    ○ Codefolding 折叠代码
+    ○ Zen mode extension 隐藏活动状态栏，方便注意代码</p>
+<h3 id="jupyter_3">配置Jupyter</h3>
+<pre><code># 查看配置
+ipython locate
+# 如果没有 ~/.jupyter/jupyter_notebook_config.py ，则执行这条命令，之后在此做配置
+jupyter notebook --generate-config
+# 编辑配置
+vim ~/.jupyter/jupyter_notebook_config.py
+or 
+C:\Users\Administrator\.jupyter\jupyter_notebook_config.py
+# 配置内容
+    # The directory to use for notebooks.这决定了jupyter启动目录
+    c.NotebookApp.notebook_dir = u'/path/to/your/notebooks'
+    or 
+    c.NotebookApp.notebook_dir = u'D:\\PythonLearning'
+</code></pre>
+
+<p>注: 部门公用地址：http://10.10.50.30:7080/tree， 密码：yunnex</p>
+<h1 id="_5">常见问题：</h1>
+<h2 id="1pipmarkupsafe10">1.pip安装MarkupSafe==1.0 问题</h2>
+<p><img alt="image-20200420140236768" src="http://res-doc.yunnex.com/picgo/image-20200420140236768.png" /></p>
+<pre><code>Using cached MarkupSafe-1.0.tar.gz (14 kB)
+    ERROR: Command errored out with exit status 1:
+     command: 'D:\yunnex\env\publish-server\Scripts\python.exe' -c 'import sys, setuptools, tokenize; sys.argv[0] = '&quot;'&quot;'C:\\Users\\yunnex\\AppData\\Local\\Temp\\pip-install-3wp8lp4x\\MarkupSafe\\setu
+p.py'&quot;'&quot;'; __file__='&quot;'&quot;'C:\\Users\\yunnex\\AppData\\Local\\Temp\\pip-install-3wp8lp4x\\MarkupSafe\\setup.py'&quot;'&quot;';f=getattr(tokenize, '&quot;'&quot;'open'&quot;'&quot;', open)(__file__);code=f.read().replace('&quot;'&quot;'\r\n'&quot;'
+&quot;', '&quot;'&quot;'\n'&quot;'&quot;');f.close();exec(compile(code, __file__, '&quot;'&quot;'exec'&quot;'&quot;'))' egg_info --egg-base 'C:\Users\yunnex\AppData\Local\Temp\pip-install-3wp8lp4x\MarkupSafe\pip-egg-info'
+         cwd: C:\Users\yunnex\AppData\Local\Temp\pip-install-3wp8lp4x\MarkupSafe\
+    Complete output (5 lines):
+    Traceback (most recent call last):
+      File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+      File &quot;C:\Users\yunnex\AppData\Local\Temp\pip-install-3wp8lp4x\MarkupSafe\setup.py&quot;, line 6, in &lt;module&gt;
+        from setuptools import setup, Extension, Feature
+    ImportError: cannot import name 'Feature' from 'setuptools' (D:\yunnex\env\publish-server\lib\site-packages\setuptools\__init__.py)
+    ----------------------------------------
+ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+</code></pre>
+
+<p>解决方法</p>
+<p>这个问题主要是 setuptool版本的问题，python3.6的setuptoll 已经升级到46 以上，需要做降级到45处理</p>
+<p>升级下setuptools的版本即可</p>
+<pre><code>(py3) [root@500cf2fd4b0c opt]# pip -V
+pip 20.0.2 from /opt/py3/lib64/python3.6/site-packages/pip (python 3.6)(py3) 
+
+[root@500cf2fd4b0c opt]# (py3-publish) root@DESKTOP-VAL3SFG:/mnt/f/yunex/publish-server# 
+
+pip list|grep setuptools
+setuptools   46.1.3 
+把脚本从原来的pip install --upgrade pip setuptools 修改为pip install --upgrade pip setuptools==45.2.0
+</code></pre>
+
+<h2 id="2pipmysqlclient1312">2.pip安装mysqlclient==1.3.12</h2>
+<p><img alt="image-20200420140250121" src="http://res-doc.yunnex.com/picgo/image-20200420140250121.png" /></p>
+<p>解决办法：</p>
+<pre><code class="python">sudo apt-get install libmysqlclient-dev
+然后进入mysql_config的路径（/usr/bin/mysql_config）
+sudo updatedb
+locate mysql_config
+</code></pre>
+
+<h2 id="3-ubuntu-pipansible">3. ubuntu pip安装ansible</h2>
+<pre><code>File &quot;/mnt/f/yunex/env/py3-publish/lib/python3.6/site-packages/pip/_vendor/urllib3/response.py&quot;, line 430, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, &quot;Read timed out.&quot;)
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out.
+</code></pre>
+
+<p>solution:</p>
+<pre><code class="py">pip3 install --default-timeout=1000 ansible==2.5.0
+</code></pre>
+
+<h2 id="3-daemon-command-not-found">3. daemon: command not found</h2>
+<p>在wsl 的ubuntu 上使用 supervisord 出现的问题</p>
+<p>/# sh /data/sh/supervisord.sh start
+Starting supervisord: /data/sh/supervisord.sh: line 24: daemon: command not found</p>
+<pre><code class="shell">cat /etc/rc.d/init.d/functions  |grep daemon
+daemon() {
+        '')    echo $&quot;$0: Usage: daemon [+/-nicelevel] {program}&quot; &quot;[arg1]...&quot;
+        *)     echo $&quot;$0: Usage: daemon [+/-nicelevel] {program}&quot; &quot;[arg1]...&quot;
+
+​   # Echo daemon
+</code></pre>
+
+<p><strong>解决方法</strong>：</p>
+<p>这个deamon 命令来源于 /etc/rc.d/init.d/functions, 这个脚本是 centos系统安装时 初始化的一个脚本, wsl ubuntu 没有此文件。</p>
+<p>在开发环境下  ，没必要去运行 supervisord ，只需在测试环境进行sepervisord 的配置验证即可</p>
+<h2 id="4celery-woker-duplicatenodenamewarning">4.celery woker 运行时报 DuplicateNodenameWarning</h2>
+<p>在运行 publish-server 的celery worker模块时 报warning:</p>
+<pre><code>[I 200415 11:22:32 mixins:224] Connected to redis://10.10.50.30:6379/2
+/mnt/d/dev/envs/publish/lib/python3.6/site-packages/celery/app/control.py:45: DuplicateNodenameWarning: Received multiple replies from node name: celery@UGZB-Devops-test1-002.
+Please make sure you give each node a unique nodename using
+the celery worker `-n` option.
+ pluralize(len(dupes), 'name'), ', '.join(sorted(dupes)),
+
+</code></pre>
+
+<p><strong>原因：</strong>这个问题主要是因为，在 publish-server/conf/celery_config.py 中指向的redis 数据库有多个celery worker共用.</p>
+<p><strong>解决办法</strong>： 把 publish-server/conf/celery_config.py 指向的数据库，指向没有人在用的，如</p>
+<p>redis 默认是创建了16个数据库，下面的数字不要大于16即可，如果需要大于16需要改redis.conf 配置</p>
+<h2 id="5windows-python2-python3pip">5.windows python2 和python3共存后，pip 无法使用</h2>
+<p>问题：</p>
+<pre><code>PS F:\yunex\cmdb-web&gt; pip3
+Fatal error in launcher: Unable to create process using '&quot;d:\program files\python3.6\python.exe&quot;  &quot;D:\Program Files\python3.6\Scripts\pip3.exe&quot; '
+</code></pre>
+
+<p>解决方法：</p>
+<pre><code>使用修改名称后python3 升级以下pip
+python3 -m pip install --upgrade pip
+
+但如果pip已经是最新版本，那么就需要先卸载掉再重新安装
+python3  -m pip install --upgrade --force-reinstall pip
+</code></pre>
+
+<h2 id="6-npm-install">6.前端  npm  install出错</h2>
+<p>在cmdb-web 进行npm install 的时候总是出错，如下</p>
+<pre><code>生成失败。
+
+  MSBUILD : error MSB4132: 无法识别工具版本“2.0”。可用的工具版本为 &quot;4.0&quot;。
+
+    0 个警告
+    1 个错误
+
+已用时间 00:00:00.07
+gyp ERR! build error
+gyp ERR! stack Error: `C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe` failed with exit code: 1
+gyp ERR! stack     at ChildProcess.onExit (F:\yunex\cmdb-web\node_modules\node-gyp\lib\build.js:262:23)
+gyp ERR! stack     at ChildProcess.emit (events.js:311:20)
+gyp ERR! stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:275:12)
+
+gyp info spawn C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe
+gyp info spawn args [
+gyp info spawn args   'build/binding.sln',
+gyp info spawn args   '/nologo',
+gyp info spawn args   '/p:Configuration=Release;Platform=x64'
+gyp info spawn args ]
+在此解决方案中一次生成一个项目。若要启用并行生成，请添加“/m”开关。
+生成启动时间为 2020/4/24 12:07:20。
+</code></pre>
+
+<p>原来这是由于nodejs 版本的问题，cmdb-web项目大概是2017年创建的，当时使用相关库的版本是比较旧的，</p>
+<p>我们采用默认安装的方式安装的nodejs ，自然安装的是12.X版本的，把nodejs 的版本回退一下即可，回退到8.X 版本。</p>
+<h2 id="7mysqlclient1313">7.安装mysqlclient==1.3.13 失败</h2>
+<p>出现的问题</p>
+<pre><code> building '_mysql' extension
+  creating build\temp.win-amd64-3.6
+  creating build\temp.win-amd64-3.6\Release
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -Dversion_info=(1,3,13,'final',0) -D__version__=1.3.13 &quot;-IC:\Program Files (x86)\MySQL\MySQL Connector C 6.1\include&quot; -IF:\yunex\dbms\python36dbms\include &quot;-Id:\program files\python3.6\include&quot; &quot;-Id:\program files\python3.6\include&quot; &quot;-IC:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include&quot; &quot;-IC:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt&quot; &quot;-IC:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared&quot; &quot;-IC:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um&quot; &quot;-IC:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt&quot; &quot;-IC:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt&quot; /Tc_mysql.c /Fobuild\temp.win-amd64-3.6\Release\_mysql.obj /Zl
+  _mysql.c
+  _mysql.c(29): fatal error C1083: 无法打开包括文件: “mysql.h”: No such file or directory
+  error: command 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x64\\cl.exe' failed with exit status 2
+  ----------------------------------------
+  ERROR: Failed building wheel for mysqlclient
+  Running setup.py clean for mysqlclient
+Failed to build mysqlclient
+Installing collected packages: mysqlclient
+    Running setup.py install for mysqlclient ... error
+
+</code></pre>
+
+<p>解决方法：</p>
+<p>在Windows中，使用<a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/">python unofficial binaries</a>安装MySQL。使用此链接并下载您所需的python软件包。</p>
+<p>使用安装它，</p>
+<pre><code>pip install ~/Downloads/mysqlclient‑1.3.10‑cp36‑cp36m‑win_amd64.whl
+</code></pre>
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:有问题可及时联系">
+<p>掌贝-黄月珍 20200415&#160;<a class="footnote-backref" href="#fnref:有问题可及时联系" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../2.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/" class="btn btn-neutral float-right" title="测试环境">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2014-2016 <a href="https://wutongtree.com" target="_blank">wutongtree.com</a></p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="../2.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>dbms部署 - 运维开发文档资源</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "dbms\u90e8\u7f72";
+    var mkdocs_page_input_path = "7.[\u8fd0\u7ef4\u5f00\u53d1]DBMS\u90e8\u7f72\u6587\u6863.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 运维开发文档资源</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../1.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/">开发工具</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../2.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/">测试环境</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../3.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DCMDB%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/">cmdb功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../4.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/">publish功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../5.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%20%E4%B8%8EWatcher%E4%BB%8B%E7%BB%8D/">dbms& wathcer功能介绍</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">dbms部署</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1">1.文档适用范围：</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2dbms">2.DBMS 整体部署说明</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_1">模块</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">数据库</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3">3.部署目录约定</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4">4.具体部署</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#41mysql56">4.1安装mysql5.6实例</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#42-inception">4.2 部署inception</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#_3">编译安装</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_4">创建修改配置文件</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#inception">启动inception</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#43-soar">4.3 下载soar 可执行文件</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#soar">创建并修改soar配置文件</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#44redis">4.4安装redis</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#45-openresty">4.5 安装openresty</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#46-supervisor">4.6 安装supervisor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#46-dbms">4.6 部署dbms</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#dbms_1">拉取dbms代码</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_5">创建并修改配置文件</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#python36">安装python3.6 并使用虚拟环境</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#python">安装python项目依赖</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#dbms_2">初始化dbms数据库</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#django">收集 django 静态文件</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#gunicorn">创建并修改gunicorn 配置文件</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_6">复制脚本并启动服务</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#celery_query">定时任务清理日志 和清理celery_query 结果</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">运维开发文档资源</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>dbms部署</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="dbms">DBMS 部署说明</h1>
+<h2 id="1">1.文档适用范围：</h2>
+<p>测试环境 与及生产环境，开发环境部署文档请参见项目内的readme.md</p>
+<p>ps: django项目，开发环境下运行不依赖于gunicorn（便于调试），但测试和生产环境下使用gunicorn,因而二者部署文档有差异。</p>
+<h2 id="2dbms">2.DBMS 整体部署说明</h2>
+<p><img alt="image-20200506165317433" src="http://res-doc.yunnex.com/picgo/image-20200506165317433.png" /></p>
+<h3 id="_1">模块</h3>
+<p>DBMS 是个基于 inception的二次开发的系统，使用的是python3.6 版本，基于django 框架，后来又加入了小米的soar 作为一个sql 审核工具。所以我们在部署时，需要部署以下这些模块：</p>
+<ul>
+<li>inception</li>
+<li>小米soar</li>
+<li>dbms 本身程序（dbms+gunicorn +nginx）</li>
+</ul>
+<p>其中 dbms 部署时 需采用 gunicorn 作为服务器，提供服务处理/服务管理/服务负载均衡的工作，nginx 作为静态文件的服务器 与及把端口转发到gunicorn。</p>
+<h3 id="_2">数据库</h3>
+<p>版本要求： mysql5.6 ，其他版本未验证过，不知是否有兼容问题</p>
+<p>从架构图中，我们可以看到，数据库是有三大用途的：</p>
+<ul>
+<li>inception 在运行时 需要保存备份和回滚数据的myql 数据库，这部分inception 自行管理，只需申请或者安装好mysql 实例后， 在inception的配置文件中指定 数据库参数（host user password 等信息）即可</li>
+<li>小米soar 在评估sql 时需要临时建表的数据库，同inception,这个库也是由saor 来自行管理，只需修改soar 配置文件，提供数据库参数即可</li>
+<li>dbms 本身使用的数据库，主要记录线上数据库地址/账号/用户权限管理等信息，由dbms 本身创建表结构，新增修改删除数据等，在初始化部署时，需初始化数据库</li>
+</ul>
+<p>所以，数据库这块我们需要安装了一个<code>mysql5.6</code> 的实例，然后根据dbms的初始化步骤，初始化数据库，再修改三处的配置文件即可。</p>
+<h2 id="3">3.部署目录约定</h2>
+<p>以下的部署，我们遵循以下的目录原则：</p>
+<pre><code>/data/svr/项目名   
+如： /data/svr/dbms ,/data/svr/inception ,/data/svr/soar 这个目录下 放置模块源码
+
+/data/conf/项目名/ 
+如：/data/conf/dbms/, /data/conf/inception/, 这个目录下放置模块的配置文件， 但soar 有点特殊，soar的配置文件是跟随源码目录：/data/svr/soar/ ，这个当时没有做soar的软链
+
+/data/sh/项目名.sh 
+如： /data/sh/dbms.sh， /data/sh/inception.sh , /data/sh/redis.sh ,/data/sh/dbms-celery.sh
+这个目录 主要是放项目的启停脚本
+
+/data/logs/项目名
+如： /data/logs/dbms ,/data/logs/dbms-celery,  /data/logs/soar, /data/logs/redis
+放置项目的log, 但inception的log 放在了tmp目录底下（这个以前一直是这么放的，也没人修改，如果需要修改，可以先查看下文档，）
+
+</code></pre>
+
+<h2 id="4">4.具体部署</h2>
+<h3 id="41mysql56">4.1安装mysql5.6实例</h3>
+<p>安装 mysql 5.6 版本实例，请按指定版本安装，其他版本未经验证，可能会有兼容问题。</p>
+<p>并创建相应的用户，使得该用户具备新增数据库/ 新建表/修改表/删除表等权限.</p>
+<p>运行mysql server.</p>
+<h3 id="42-inception">4.2 部署inception</h3>
+<h4 id="_3">编译安装</h4>
+<p>inception 源码： https://github.com/qunarcorp/inception</p>
+<p>inception 文档说明：https://qunarcorp.github.io/inception/</p>
+<p>请创建 <code>/data/svr/inception</code> 目录后，在该目录下，根据inception的文档进行编译安装。</p>
+<h4 id="_4">创建修改配置文件</h4>
+<p>把以下配置选项建立到<code>/data/conf/inception/inception.cnf</code> 文件，<strong>并根据实际情况进行修改，</strong></p>
+<p><strong>如 数据库地址 /账号/端口等信息。</strong></p>
+<pre><code>[inception]
+# inception运行的端口号
+port=6669
+socket=/tmp/inc.socket
+general_log=ON
+
+# 设置inception的日志路径
+general_log_file=/tmp/inception.log
+
+#mysql 实例的地址，账号 端口等信息，根据实际情况修改
+inception_remote_system_user=backup
+inception_remote_system_password=fd56RDtXwTgEExl7Ewx
+inception_remote_backup_port=3306
+inception_remote_backup_host=10.13.137.136
+#字符集
+character-set-client-handshake=0
+character-set-server=utf8mb4
+inception_support_charset=utf8mb4,utf8
+
+#是否允许列自己设置字符集
+inception_enable_column_charset=1
+#可以使用关键字
+inception_enable_identifer_keyword=ON
+#不支持外键
+inception_enable_foreign_key=OFF
+#自增列可以不为无符号型
+inception_enable_autoincrement_unsigned=OFF
+
+#pt-osc工具的路径
+inception_osc_bin_dir=/usr/bin/
+#表大小大于4G时使用pt-osc
+inception_osc_min_table_size=4096
+inception_max_update_rows = 50000
+</code></pre>
+
+<p>另，inception 配置文件说可参见官方文档：http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=22121563</p>
+<h4 id="inception">启动inception</h4>
+<p>启动：/data/svr/inception/debug/sql/Inception &ndash;defaults-file=/data/conf/inception/inception.cnf</p>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>
+<p>inception 下载源码编译一次后，如果需要做迁移，迁移的两台主机 系统与及系统版本是一样的，那么可以直接把编译文件 copy 过去运行即可。</p>
+</li>
+<li>
+<p>测试环境的DBMS，是给test-a，test-b等环境使用，地址是 192.168.1.15</p>
+</li>
+</ul>
+<h3 id="43-soar">4.3 下载soar 可执行文件</h3>
+<p>soar 作为一个工具，是不需要运行的，只要在指定目录下有这个二进制代码，即可</p>
+<p>下载地址https://github.com/XiaoMi/soar 根据系统下载二进制 文件即可</p>
+<p>把soar 可执行文件放到指定目录：<code>/data/svr/soar/soar.linux-amd64</code></p>
+<h5 id="soar">创建并修改soar配置文件</h5>
+<p>使用以下内容，创建文件 <code>/data/svr/soar/soar.yaml</code>，可根据实际情况修改</p>
+<pre><code>log-level: 6
+log-output: /data/logs/soar/soar.log
+</code></pre>
+
+<p>目前只配置关于log这两个选项，如果需要增加其他选项 ，可参考官方文档进行处理。</p>
+<h3 id="44redis">4.4安装redis</h3>
+<p>由于dbms 采用celery 做了异步查询，需要依赖于redis做消息队列，所以需要安装redis，并启动。</p>
+<p>配置文件请放到 <code>/data/conf/redis/6379.conf</code></p>
+<p>redis启动脚本请放到 <code>/data/sh/redis.sh</code></p>
+<h3 id="45-openresty">4.5 安装openresty</h3>
+<p>安装openresty 到目录<code>/data/svr</code> 目录下，把启动脚本放置到 <code>/data/sh/openresty.sh</code> 下，</p>
+<p>并把<code>dbms.conf</code> 放置到<code>/data/conf/openresty/vhost/</code>目录下，测试环境和生产环境只需改域名，其他可不动。</p>
+<pre><code>upstream gunicorn {
+    # gunicorn的运行地址
+    server 127.0.0.1:8080;
+}
+server {
+    listen      80;
+    # 此处设置域名，如果是测试环境下，可更换为ip地址
+    server_name myadmin.ops.yunnex.com;
+
+    access_log /data/logs/openresty/dbms.access.log main;
+
+    charset     utf-8;
+    location = /50x.html {
+        root html;
+    }
+
+    location / {
+        include uwsgi_params;
+        proxy_pass       http://gunicorn;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $http_x_forwarded_for;
+        #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_redirect off;
+    }
+    location /static/ {
+        root /data/svr/dbms-static/;
+        expires off;
+        #access_log off;
+    }
+    location /docs {
+        index index.html;
+        alias /data/svr/dbms-doc/site;
+        expires off;
+    }
+
+    location = /favicon.ico {
+        rewrite (.*) /static/favicon.ico;
+    }
+    location = /robots.txt {
+       root html;
+    }
+}
+
+</code></pre>
+
+<h3 id="46-supervisor">4.6 安装supervisor</h3>
+<p>安装过程请参见http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=28607636</p>
+<p>supervisor 主要是用来守护 dbms-celery的进程，gunicorn 无需supervisor 。</p>
+<p>启动脚本请放到 <code>/data/sh/supervisord.sh</code> <code>/data/sh/supervisorctl.sh</code></p>
+<p>安装supervisord 时请确保 配置文件放置于<code>/data/conf/supervisor/</code>目录下。</p>
+<p>配置 <code>/data/conf/supervisor/conf.d/dbms-celry.conf</code></p>
+<pre><code>[group:dbms-celery]
+programs=dbms-celery-1
+
+[program:dbms-celery-1]
+environment=PYTHONOPTIMIZE=1
+command=/data/svr/python36dbms/bin/celery worker -A db-tool -l info --logfile=/data/logs/dbms-celery/celery.log
+process_name=%(program_name)s
+startsecs=1
+directory=/data/svr/dbms
+autorestart=true
+autostart=true
+stderr_logfile=/data/logs/supervisor/%(program_name)s_error.log
+stderr_logfile_maxbytes=50MB
+stderr_logfile_backups=10
+stdout_logfile=/data/logs/supervisor/%(program_name)s_error.log
+stdout_logfile_maxbytes=50MB
+stdout_logfile_backups=10
+user=root
+stopsignal=INT
+</code></pre>
+
+<h3 id="46-dbms">4.6 部署dbms</h3>
+<h4 id="dbms_1">拉取dbms代码</h4>
+<p>项目地址：http://git.dev.yunnex.com/ops/dbms.git</p>
+<p>把源码拉取到<code>/data/svr/dbms</code> 目录下</p>
+<h4 id="_5">创建并修改配置文件</h4>
+<pre><code class="bash">mkdir  -p /data/conf/dbms
+cp  db-tool/local_settings_example.py  /data/conf/dbms/local_settings.py
+</code></pre>
+
+<h5 id="local_settingspy">修改local_settings.py</h5>
+<p>修改inception 配置(local_settings.py)</p>
+<pre><code class="python"># inception setting
+##inception 运行所在的主机 和运行的端口号
+INCEPTION_HOST = '10.10.50.30'
+INCEPTION_PORT = 6669
+
+# inception执行之后，处理rollback语句，所需的用户
+# 即：inception配置文件中的inception_remote_system_user
+BACKUP_HOST = '192.168.1.15'
+BACKUP_PORT = 3306
+BACKUP_USER = 'root'
+BACKUP_PASSWD = '3uqaGVM8CST8Uq1z'
+
+</code></pre>
+
+<p>修改soar 配置(local_settings.py)</p>
+<pre><code class="python"># soar setting
+# soar需要配置数据库，进行数据采样，
+#然后在采样获得的数据表上执行sql 评估
+# 此处配置供soar 使用的数据库，需确保 采用的user 具有新增数据库和数据表的权限
+# user:password@mysql_host:port
+TEST_DSN = 'root:yunnex@10.10.50.30:3306'
+
+# soar path 指向本地的soar 目录
+SOAR_PATH = 'G:\\work\\soar\\'
+</code></pre>
+
+<p>修改celery配置(local_settings.py)</p>
+<pre><code class="python"># CELERY settings
+# celery异步查询任务 结果存放地址
+# 生产机器可定期清理该目录，已设置定时任务（crontab ）进行清理
+QUERY_RESULT_DIR = '/home/data/dbms-query-result/'
+# 消息队列 redis 的地址/数据库
+CELERY_BROKER_URL = 'redis://10.10.50.30/4'
+</code></pre>
+
+<p>修改dbms 设置(local_settings.py)</p>
+<pre><code class="python"># database setting
+# dbms 采用的数据库，记录user db host group 等信息
+# 只需修改 host user password 信息
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'devops',
+        'USER': 'remote_user',
+        'PASSWORD': 'remote_passwd',
+        'HOST': '10.10.50.30',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': &quot;SET sql_mode='STRICT_TRANS_TABLES'&quot;,
+        },
+    },
+}
+# 界面上显示的环境信息
+SITE_NAME = '生产环境'
+
+# static setting
+# 当使用 python manage.py collectstatic命令去自动化生成静态文件时，
+# 把静态文件 存放到哪里
+STATIC_ROOT = '/data/svr/dbms-static'
+
+</code></pre>
+
+<h4 id="python36">安装python3.6 并使用虚拟环境</h4>
+<p>具体安装和虚拟环境设置请参见http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=28607633</p>
+<p>确保此步骤虚拟出的环境名及路径为<code>/data/svr/python36dbms</code>（启动脚本会依赖此虚拟环境名称）</p>
+<h4 id="python">安装python项目依赖</h4>
+<pre><code>#激活虚拟环境  并保持，直到 项目部署成功
+source /data/svr/python36dbms/bin/activate
+
+cd /data/svr/dbms
+# 安装依赖
+pip install -r requirement.txt
+
+# 安装开发环境下的依赖,测试和生产环境无需处理
+python install -r requirement-deploy.txt
+# 如果是window开发，还需安装evenlet（celery依赖）
+pip install eventlet==0.25.2
+</code></pre>
+
+<h4 id="dbms_2">初始化dbms数据库</h4>
+<p>在安装好的mysql 实例中，创建一个数据库devops</p>
+<pre><code>create database devops;
+</code></pre>
+
+<p>执行命令，把数据库结构建立到 数据库</p>
+<p>下面这个命令的意思是显示出有哪些数据库变更和当前状态（which lists a project’s migrations and their status.）</p>
+<pre><code>python manage.py showmigrations
+</code></pre>
+
+<p>生成变更文件（which is responsible for creating new migrations based on the changes you have made to your models.）</p>
+<pre><code>python manage.py makemigrations
+</code></pre>
+
+<p>执行变更到数据库（which is responsible for applying and unapplying migrations）</p>
+<pre><code>python manage.py migrate
+</code></pre>
+
+<h4 id="django">收集 django 静态文件</h4>
+<p>请确保 <code>/data/conf/dbms/local_settings.py</code> 文件中STATIC_ROOT 是指向<code>/data/svr/dbms-static/</code>，</p>
+<p>然后执行以下操作，把css 等静态文件收集到指定位置</p>
+<pre><code># 静态文件
+# 静态文件存放位置：/data/svr/dbms-static/
+python manage.py collectstatic
+</code></pre>
+
+<h4 id="gunicorn">创建并修改gunicorn 配置文件</h4>
+<p>在非开发环境中, django 只作为一个 http framwork来使用，不具备server的功能，需要gunicorn 来实现，创建 <code>gunicorn.cnf</code> 到目录<code>/data/conf/dbms/</code> 下（启动脚本会依赖此路径）</p>
+<p><code>gunicorn.cnf</code> 内容：</p>
+<pre><code>worker_class = 'gevent'
+graceful_timeout = 28800
+workers = 8 
+threads = 16
+daemon = True
+access_log_format = '%(h)s %(l)s %(u)s %(t)s &quot;%(r)s&quot; %(s)s %(b)s &quot;%(f)s&quot; &quot;%(a)s&quot; %(L)s &quot;%({Header}i)s&quot; &quot;%({Header}o)s&quot; '
+loglevel = 'debug'
+bind = '127.0.0.1:8080'
+timeout = 28800
+backlog = 65535
+# dbms 源码位置
+chdir = '/data/svr/dbms'
+# log 日志设置
+errorlog = '/data/logs/dbms/gunicorn.log'
+accesslog = '/data/logs/dbms/gunicorn.log'
+</code></pre>
+
+<h4 id="_6">复制脚本并启动服务</h4>
+<p>请把以下两个脚本<code>dbms.sh</code> <code>dbms-celery</code>创建到 <code>/data/sh</code> 目录下，</p>
+<p>创建完成后，按以下脚本进行启动，启动完成后部署完成</p>
+<pre><code># 启动openresty
+/data/sh/openresty.sh start
+
+# 启动redis
+/data/sh/redis.sh
+
+#启动 inception
+/data/svr/inception/debug/sql/Inception --defaults-file=/data/conf/inception/inception.cnf
+
+#启动supervisord（先启动supervisord，再启动dbms 和dbms-celery）
+/data/sh/supervisord.sh
+
+# 启动dbms
+/data/sh/dbms.sh start
+
+# 启动dbms-celery
+/data/sh/dbms-celery.sh start
+
+</code></pre>
+
+<p>/data/sh/dbms.sh`</p>
+<pre><code class="bash">#!/bin/bash
+source /data/svr/python36dbms/bin/activate
+start() {
+    gunicorn db-tool.wsgi -c /data/conf/dbms/gunicorn.conf
+}
+
+stop() {
+    pkill -9 -f gunicorn.conf
+}
+status() {
+      pid=$(ps -ef |grep &quot;/data/conf/dbms/gunicorn.conf&quot;|grep -v grep |awk '{print $2}')
+      if [[ &quot;${pid}&quot; ]] ; then
+          echo &quot;running&quot;
+      else
+          echo &quot;stopping&quot;
+      fi
+}
+restart() {
+    stop &amp;&amp; start
+}
+
+case &quot;$1&quot; in
+  start)
+       $1
+       ;;
+  stop)
+       $1
+       ;;
+  status)
+       $1
+       ;;
+  refresh)
+       $1
+       ;;
+  restart)
+       $1
+       ;;
+  *)
+       echo $&quot;Usage: $0 {start|stop|status|restart}&quot;
+       exit 1
+esac
+exit $?
+</code></pre>
+
+<p><code>/data/sh/dbms-celery.sh</code></p>
+<pre><code class="shell">#!/bin/bash
+GROUPNAME=dbms-celery
+PIDPATH=/var/run
+CONF=/data/conf/supervisor/supervisord.conf
+USER=product
+PROGRAM=&quot;/usr/bin/supervisorctl -c $CONF&quot;
+
+if [ ! -d $PIDPATH ]; then
+    mkdir $PIDPATH
+    chown $USER $PIDPATH
+fi
+RETVAL=0
+start() {
+    $PROGRAM start $GROUPNAME:*
+    RETVAL=$?
+}
+stop() {
+    $PROGRAM stop $GROUPNAME:*
+    RETVAL=$?
+}
+restart() {
+    $PROGRAM restart $GROUPNAME:*
+    RETVAL=$?
+}
+status() {
+    $PROGRAM status $GROUPNAME:*
+    RETVAL=$?
+}
+case &quot;$1&quot; in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    restart
+    ;;
+  status)
+    status
+    ;;
+  *)
+    echo $&quot;Usage: $0 {start|stop|status|restart}&quot;
+    exit 1
+esac
+exit $RETVAL
+</code></pre>
+
+<h3 id="celery_query">定时任务清理日志 和清理celery_query 结果</h3>
+<pre><code class="bash">0 0 * * * /bin/bash /root/cron/cut_dbms_celery_log.sh 0 0 * * 0 /bin/bash /root/cron/delete_query_result.sh
+
+
+</code></pre>
+
+<p>cut_dbms_celery_log.sh</p>
+<pre><code>#!/bin/bash
+src_path=&quot;/data/logs/dbms-celery&quot;
+src_file=&quot;celery.log&quot;
+suffix=&quot;$(date -d &quot;yesterday&quot; +&quot;%F&quot;)&quot;
+save_backup_day=30
+
+
+cut_log() {
+ file_path=&quot;${src_path}/${src_file}&quot;
+ cp ${file_path} ${file_path}.$suffix &amp;&amp; &gt; ${file_path}
+ find ${src_path} -mtime +&quot;${save_backup_day}&quot; -exec rm -rf {} \; &gt;/dev/null 2&gt;&amp;1
+}
+
+cut_log
+</code></pre>
+
+<p>delete_query_result.sh</p>
+<pre><code>#!/bin/bash
+src_path=&quot;/data/logs/dbms-celery&quot;
+src_file=&quot;celery.log&quot;
+suffix=&quot;$(date -d &quot;yesterday&quot; +&quot;%F&quot;)&quot;
+save_backup_day=30
+
+
+cut_log() {
+ file_path=&quot;${src_path}/${src_file}&quot;
+ cp ${file_path} ${file_path}.$suffix &amp;&amp; &gt; ${file_path}
+ find ${src_path} -mtime +&quot;${save_backup_day}&quot; -exec rm -rf {} \; &gt;/dev/null 2&gt;&amp;1
+}
+
+cut_log
+[root@UGZ-DBMS-001 ~]# cat /root/cron/delete_query_result.sh 
+base_dir=&quot;/home/data/dbms-query-result&quot;
+save_backup_day=90
+
+find ${base_dir} -mtime +&quot;${save_backup_day}&quot; -delete
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../5.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%20%E4%B8%8EWatcher%E4%BB%8B%E7%BB%8D/" class="btn btn-neutral" title="dbms& wathcer功能介绍"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2014-2016 <a href="https://wutongtree.com" target="_blank">wutongtree.com</a></p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../5.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%20%E4%B8%8EWatcher%E4%BB%8B%E7%BB%8D/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

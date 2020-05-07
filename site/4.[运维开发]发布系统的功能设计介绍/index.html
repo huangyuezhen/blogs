@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>publish功能介绍 - 运维开发文档资源</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "publish\u529f\u80fd\u4ecb\u7ecd";
+    var mkdocs_page_input_path = "4.[\u8fd0\u7ef4\u5f00\u53d1]\u53d1\u5e03\u7cfb\u7edf\u7684\u529f\u80fd\u8bbe\u8ba1\u4ecb\u7ecd.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 运维开发文档资源</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../1.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/">开发工具</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../2.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/">测试环境</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../3.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DCMDB%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/">cmdb功能介绍</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">publish功能介绍</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1">1.架构图</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">术语介绍</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2">2.功能模块</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#21">2.1 创建发版</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#211">2.1.1创建发版的规则</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#212">2.1.2 粘贴应用的包地址后发生了些什么：</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#22">2.2 执行发版：</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#221">2.2.1 在“发版页面”点击执行后发生了什么：</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#222-task">2.2.2 task 执行方式的选择</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#223-task">2.2.3 task 执行逻辑</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#23">2.3 发布系统包及脚本的流转过程</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#24">2.4创建回滚与执行</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#_3">创建回滚的规则</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_4">发版页面点击回滚后发生了什么?</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3">3. 数据库设计</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4">4. 权限设置</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../5.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%20%E4%B8%8EWatcher%E4%BB%8B%E7%BB%8D/">dbms& wathcer功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../7.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/">dbms部署</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">运维开发文档资源</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>publish功能介绍</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">发布系统的功能设计介绍</h1>
+<h3 id="1"><strong>1.架构图</strong></h3>
+<p><img alt="image-20200420135521394" src="http://res-doc.yunnex.com/picgo/image-20200420135521394.png" /></p>
+<h4 id="_2">术语介绍</h4>
+<pre><code>publish-web： 发布系统前端
+
+publish-server: 发版系统后端
+
+celery-worker: 任务消费者
+
+
+publish_plan : 发版任务，一次发版是一个 发版任务，或者指存放发版任务的数据表（下同）
+publish_plan_id : 发版任务id
+
+publish_pattern / pattern  : 发版步骤 （一个发版任务由多个发版步骤组成）
+publish_pattern_id /pattern_id:发版步骤id
+
+publish_application： 发版应用，一次发版任务对应的应用
+publish_host : 发布主机，一次发版任务对应哪些主机
+
+
+
+action : 发布系统定义的 一系列动作, 一个发布步骤对应一个action 
+如 1: 发布 2: 停服务 3: 提示  11: 回滚发布 12：回滚启动服务 13: 回滚提示 14: 回滚停止服务  19:回滚到一半进行停顿
+
+
+task : 发布系统定义的原子任务，一个action 对应着一系列的task 
+如 ： [&quot;下载包到目标服务器&quot;,&quot;停止nginx&quot;,&quot;停止应用&quot;,&quot;备份日志&quot;, &quot;改软链到新版本&quot;,&quot;更新cmdb信息&quot;,&quot;启动应用&quot;,&quot;启动nginx&quot;]
+
+publish_action_task： 一个存放action 和task 映射关系的表
+
+</code></pre>
+
+<h3 id="2">2.功能模块</h3>
+<p>发布系统的功能说起来也是比较简单的，主要就是</p>
+<ul>
+<li>创建发版</li>
+<li>执行发版</li>
+<li>回滚发版</li>
+</ul>
+<p>当然这是简化出来的三大功能，它里面是包含了很多细节的，下面就主要讲下这些细节部分。</p>
+<h4 id="21"><strong>2.1 创建发版</strong></h4>
+<h5 id="211">2.1.1创建发版的规则</h5>
+<p>创建发版需要遵循以下的规则去创建：</p>
+<ul>
+<li>应用规则，mod / spring  / dubbo-consumer ----&gt; web+mod   ----&gt;    web/static</li>
+<li>主机规则，蓝绿发布一半一半地发</li>
+</ul>
+<p>我们的发版系统在设计时，把创建发版放在了前端来执行，也就是粘贴应用包地址后，步骤的生成是前端来处理这样的一个逻辑。</p>
+<h5 id="212"><strong>2.1.2 粘贴应用的包地址后发生了些什么：</strong></h5>
+<ol>
+<li>
+<p>前端解析出应用名称</p>
+</li>
+<li>
+<ul>
+<li>前端请求cmdb 获得该应用的应用类型 等信息</li>
+</ul>
+</li>
+<li>
+<p>前端请求publish-server检测包地址的有效性（是否可下载）</p>
+</li>
+<li>
+<p>前端请求publish-server 获得主机按应用 master/slave 分类信息</p>
+</li>
+<li>
+<p>前端根据 以上信息 ，进行发版步骤生成</p>
+</li>
+<li>
+<p>提交 到publish-server</p>
+</li>
+<li>
+<p>publish-server 根据前端提交过来的各个发版步骤信息，</p>
+</li>
+<li>
+<p>创建 publish_project(如果是新建)/ publish_plan/publish_application/publish_host/publish_pattern 表记录</p>
+</li>
+<li>
+<p>根据提交过来的action( 1: 发布 2: 停服务 3: 提示 等 )，查询publish_action_task表，获得每个主机需要执行的task,如下面 是action:1  application_type: web的主机所要执行的task</p>
+<p><code>'["下载包到目标服务器","停止nginx","停止应用","备份日志", "改软链到新版本","更新cmdb信息","启动应用","启动nginx"]'</code></p>
+<p>把这些task 创建到publish_pattern_task表</p>
+</li>
+<li>
+<p>以上表记录创建完之后，publish-server 会从 应用的git 仓库把包拉到publish-server 部署主机的/home/data 目录下，所以提交完 创建发版后，在发版列表页面我们是可以看到包下载的进度的。</p>
+</li>
+</ol>
+<h4 id="22"><strong>2.2 执行发版</strong>：</h4>
+<p>创建发版 已经把各个步骤该做什么都创建好了，执行发版需要考虑 的是 主机的 各个task 如何执行</p>
+<h5 id="221"><strong>2.2.1 在“发版页面”点击执行后发生了什么</strong>：</h5>
+<ol>
+<li>publish-web：</li>
+<li>判断出当前执行到了哪一步？获取待执行的pattern_id</li>
+<li>
+<p>发送pattern_id 到publish-server</p>
+</li>
+<li>
+<p>publish-server收到 需要执行的pattern_id 后：</p>
+</li>
+<li>查找出 该pattern 下的所有 主机</li>
+<li>查找出主机的 task 列表</li>
+<li>分主机，把主机的tasks 按列表 串连起来</li>
+<li>把串联起来的tasks 扔到redis 消息队列，让celery-worker 去执行</li>
+<li>
+<p>更新 该pattern 状态，改为进行中，并把变化通过websocket 推送到前端</p>
+</li>
+<li>
+<p>publish-web ：</p>
+</li>
+<li>
+<p>WebSocket 获取到pattern的变化状态，并更新为执行中</p>
+</li>
+<li>
+<p>celery-worker: </p>
+</li>
+<li>
+<p>从redis中获得 tasks 按顺序串行执行，直到task 执行完毕</p>
+</li>
+<li>
+<p>把task 执行完后返回的结果，记录到数据库，并更新pattern 状态</p>
+</li>
+<li>
+<p>publish-server:</p>
+</li>
+<li>
+<p>监听到pattern 状态已变化，与及 task 有结果返回，通过WebSocket推送到前端</p>
+</li>
+<li>
+<p>publish-web:</p>
+</li>
+<li>更新pattern状态，更新task状态</li>
+</ol>
+<p>这样就完成了一个发版步骤的执行，再次点击执行，就会重复以上步骤 往下执行发版步骤</p>
+<h5 id="222-task">2.2.2 task 执行方式的选择</h5>
+<h6 id="ansible">选择ansible</h6>
+<p>我们的发布系统的很远任务都是需要连接到远程主机上面去执行的，那么就需要选择一款远程连接的工具。</p>
+<p>​        ansible:   一个远程命令执行工具，通过ssh 连接到远程主机，      </p>
+<pre><code>  优点 ：无agent ,安装部署简单，学习成本低，执行命令行 和api 形式调用
+  缺点： 但主机规模上千台后，集中式的模式导致执行效率过低，表现为慢
+</code></pre>
+
+<p>​        saltstack: 同类型的一个远程命令执行工具</p>
+<pre><code>   优点： server-agent 的模式，减轻server的压力，适用于大规模的系统
+   缺点： 需安装agent ,安装部署相对麻烦
+</code></pre>
+
+<p>​     经过以上对比，我们当前4-500台的主机规模，选择ansible方式足以</p>
+<p>​    我们发布系统是采用ansible api方式 去执行调用，</p>
+<p>​     另可参见http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=21302358</p>
+<h6 id="celery">选择celery</h6>
+<ul>
+<li>
+<p>celery :  是一个 基于python开发的分布式异步消息任务队列，通过它可以轻松的实现任务的异步处理。</p>
+</li>
+<li>
+<p>远程主机执行任务一般是个耗时任务，如果是采用同步执行的方式，即使开10个20个的进程，可能一两个人发版就把我们整个发布系统的进程给阻塞住了， 这时候就需要考虑到 异步非阻塞的方式。</p>
+</li>
+<li>
+<p>publish-server 只需把需要运行的task 扔到消息队列，并写好回调函数 即可，celery会做好任务调度，执行task 并把结果根据回调函数进行处理</p>
+</li>
+</ul>
+<p>发布系统使用celery更多信息</p>
+<p>可参见http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=20550451</p>
+<p>那么这样就会有个问题，http 请求讲究的是 一问一答形式 的响应模式啊，你你你任务还没执行完就返回结果给我了，说任务提交成功， 那么我什么时候才直到 任务执行成功呢？</p>
+<h6 id="websocket">选择WebSocket</h6>
+<p>WebSocket 是一种网络通信协议，不同于http,它允许双向通信和保持不断开。</p>
+<ul>
+<li>
+<p>在WebSocket 出来前采用的是 http 长轮询的方式，隔一段时间就去问一下，任务执行好了没呀，直到服务器返回结果。http 长轮询的缺点是很明显的，http 连接底层的tcp 三次握手建立连接的过程是比较消耗CPU的，而且很多连接是无效的，只有最后一次返回结果的那次 才是我们真正想要的。</p>
+</li>
+<li>
+<p>既然不断地建立连接断开连接的过程是很耗费资源的，那么可不可以 只建立一次连接，然后keep住不断开直到等到想要的结果返回呢？技术就是因为这样有不同的生产需求发展而来的，WebSocket 应运而生。</p>
+</li>
+<li>
+<p>WebSocket 在建立连接的初期采用的是http连接，连接建好后升级为 websocket,允许服务器与客户端之间的双向通信。实际上 在建立了 WebSocket 的连接后，我们的server 端也是在不断地查询数据库有没结果返回。</p>
+</li>
+</ul>
+<p>回到我们的发布系统，我们多个地方使用WebSocket作为发布状态的更新，使用到WebSocket的地方有</p>
+<ul>
+<li>
+<p>每个主机task 的执行状态更新</p>
+</li>
+<li>
+<p>task的日志状态即 发版页面的“详细”</p>
+</li>
+<li>
+<p>应用状态（service/dubbo/nginx/eruke）</p>
+</li>
+</ul>
+<p><img alt="image-20200420135549800" src="http://res-doc.yunnex.com/picgo/image-20200420135549800.png" /></p>
+<h5 id="223-task">2.2.3 task 执行逻辑</h5>
+<h6 id="2231-taskshell"><strong>2.2.3.1 发版系统的task是怎么和shell脚本结合起来到业务主机上执行任务的呢？</strong></h6>
+<pre><code>'[&quot;下载包到目标服务器&quot;,&quot;停止nginx&quot;,&quot;停止应用&quot;,&quot;备份日志&quot;, &quot;改软链到新版本&quot;,&quot;更新cmdb信息&quot;,&quot;启动应      用&quot;,&quot;启动nginx&quot;]'
+上面这些 task  只是一个个名字， 真正到业务主机上执行的是 shell 脚本定义的一系列动作， 也就是每个task      name 背后是对应着一个个shell/python脚本的，这种对应关系，我们是在publish_script 这个数据表里对应起   来的，下图就是我们的publish_script 表
+</code></pre>
+
+<p><img alt="image-20200417142949486" src="http://res-doc.yunnex.com/picgo/image-20200417142949486.png" /></p>
+<h6 id="2232-action-task">2.2.3.2 发布系统的 action 是怎么和 task 对应起来的呢？</h6>
+<p>action 与及task 的含义请参见上文的术语介绍</p>
+<p>通过一张 publish_action_task 的表，我们把二者关联起来，同一action ,不同的应用类型 对应的task 也是不一样的，如果后面需要 修改发布 这个action对应的task,那么修改这张数据表即可。</p>
+<p><img alt="image-20200420135625323" src="http://res-doc.yunnex.com/picgo/image-20200420135625323.png" /></p>
+<h6 id="2233">2.2.3.3  一台主机有多个任务，是怎么控制它的执行顺序的呢？**</h6>
+<pre><code> 各个task我们会创建一个链表，一个task成功后在它的回调里去调用下一个task ,直到最后一个task 执行完成。
+</code></pre>
+
+<h6 id="2234"><strong>2.2.3.4 一个步骤里有多台主机，它们是并行还是串行执行呢？是怎么实现的呢？</strong></h6>
+<pre><code>  它们是并行执行的。
+  我们在部署发布系统给时，除了会启动publish-server 外，还会启动celery-worker 。
+  publish-server相当于是个任务的生产者，celery-worker 作为任务的消费者，redis作为二者间的消息中转，起到解耦和缓冲的作用。我们的celery-worker 是不止一个的，具有多个进程的celery-worker同时在跑，都从redis 上去获取待执行的任务。这些任务的调度和分配都是celery 帮我们完成的。通过这种方式来实现多个主机的task并行执行。如下图的celery生产者消费者模式（我们主要任务走的是下图的这个模式，还有个 publish-worker主机上的celery-work 专门是查询状态的，task结果存储采用的也是redis，具体参见我们架构图）
+</code></pre>
+
+<p><img alt="image-20200420135647338" src="http://res-doc.yunnex.com/picgo/image-20200420135647338.png" /></p>
+<h4 id="23">2.3 发布系统包及脚本的流转过程</h4>
+<p>总结下 上面发布系统包的流转过程，如下</p>
+<p><img alt="" src="http://res-doc.yunnex.com/picgo/发布系统包的流转过程.jpg" /></p>
+<p>发布系统 脚本的流转过程</p>
+<p><img alt="image-20200422112041163" src="http://res-doc.yunnex.com/picgo/image-20200422112041163.png" /></p>
+<h4 id="24">2.4创建回滚与执行</h4>
+<h5 id="_3">创建回滚的规则</h5>
+<p>创建回滚类似于创建发版，但不同的是 </p>
+<ul>
+<li>创建回滚与发版是相反的过程，应用的发版顺序是相反的，mod / spring  / dubbo-consumer &lt;&lt;---- web+mod   &lt;&lt;----  web/static</li>
+<li>回滚需要判断当前的执行状态，发版者可以在发版过程中第一步执行之后的任意一步执行回滚</li>
+</ul>
+<p>在构建回滚步骤时，遵循的就是上面这两个原则，执行回滚步骤的过程 跟执行 发版过程无异。</p>
+<h5 id="_4">发版页面点击回滚后发生了什么?</h5>
+<ol>
+<li>publish-web：</li>
+</ol>
+<p>传递当前publish_plan_id 到后端，并等待回滚步骤的返回</p>
+<ol>
+<li>
+<p>publish-server:</p>
+</li>
+<li>
+<p>收到 publish_plan_id后，把状态为成功或失败的publish_pattern 对应的application host 选择出来</p>
+</li>
+<li>
+<p>根据回滚原则生成回滚步骤 并写入到数据库</p>
+</li>
+<li>
+<p>返回回滚步骤到前端</p>
+</li>
+<li>
+<p>publish-web :</p>
+</li>
+</ol>
+<p>把回滚步骤更新到页面</p>
+<p>这样回滚步骤就已生成，接下来的执行 就跟正常发版的执行过程是一样的了。</p>
+<h3 id="3">3. 数据库设计</h3>
+<p><img alt="image-20200420135705681" src="http://res-doc.yunnex.com/picgo/image-20200420135705681.png" /></p>
+<p>具体介绍参见 wiki:</p>
+<p>http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=21311053</p>
+<p>添加下图作辅助理解上面的数据表结构（来源于罗总）</p>
+<p><img alt="image-20200422112247417" src="http://res-doc.yunnex.com/picgo/image-20200422112247417.png" /></p>
+<p><img alt="img" src="http://res-doc.yunnex.com/picgo/企业微信截图_158743995822.png" /></p>
+<h3 id="4">4. 权限设置</h3>
+<p>采用ldap登录验证，主要通过三张表来分配权限：</p>
+<pre><code>表permission:  具有哪些权限
+
+表role: 具有哪些角色
+
+表 role-permission : 定义哪些角色具有哪些权限
+
+表user: 定义用户， 只有采用过ldap 登录过我们系统的用户才会记录在此表中
+
+表 user-role ： 定义用户分配到哪些角色
+</code></pre>
+
+<p>另可请参见 wiki http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=28610080</p>
+<p>表permission 的内容</p>
+<p><img alt="image-20200420162952782" src="http://res-doc.yunnex.com/picgo/image-20200420162952782.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../5.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%20%E4%B8%8EWatcher%E4%BB%8B%E7%BB%8D/" class="btn btn-neutral float-right" title="dbms& wathcer功能介绍">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../3.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DCMDB%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/" class="btn btn-neutral" title="cmdb功能介绍"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2014-2016 <a href="https://wutongtree.com" target="_blank">wutongtree.com</a></p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../3.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DCMDB%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../5.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%20%E4%B8%8EWatcher%E4%BB%8B%E7%BB%8D/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>dbms& wathcer功能介绍 - 运维开发文档资源</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "dbms& wathcer\u529f\u80fd\u4ecb\u7ecd";
+    var mkdocs_page_input_path = "5.[\u8fd0\u7ef4\u5f00\u53d1]DBMS \u4e0eWatcher\u4ecb\u7ecd.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 运维开发文档资源</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../1.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/">开发工具</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../2.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/">测试环境</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../3.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DCMDB%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/">cmdb功能介绍</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../4.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/">publish功能介绍</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">dbms& wathcer功能介绍</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#dbms">DBMS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_1">架构</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#inception">inception的安装 与运行</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#soar">soar 安装</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#inception_1">inception配置</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#watcher">watcher</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">架构</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../7.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/">dbms部署</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">运维开发文档资源</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>dbms& wathcer功能介绍</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="dbms-watcher">DBMS 与Watcher介绍</h1>
+<h2 id="dbms">DBMS</h2>
+<h3 id="_1">架构</h3>
+<p><img alt="image-20200430145154868" src="http://res-doc.yunnex.com/picgo/image-20200430145154868.png" /></p>
+<p>DBMS是一个基于开源的inception的一个myql 自动化审核/ 执行/ 回滚的 数据库管理平台，核心的功能都是inception 来帮助实现的，DBMS 是在调用 inception的基础上，自己采用python django框架 搭建起的一个web平台。</p>
+<p>后来 小米开源了一个soar,作用是应用于sql 语句的评估，给出相应的得分 和优化意见，而这是inception所缺乏的，因而我们把soar 嵌入进我们现有的DBMS。</p>
+<h3 id="inception">inception的安装 与运行</h3>
+<p>inception 源码： https://github.com/qunarcorp/inception</p>
+<p>inception 文档说明：https://qunarcorp.github.io/inception/</p>
+<p>linux 系统下：</p>
+<p>首先就是编译，在源码根目录下面有一个文件inception_build.sh，执行命令<code>sh inception_build.sh</code>，会输出使用方法。 实际上只需要执行<code>inception_build.sh debug [Xcode]</code>即可，后面的平台是可选的，如果不指定就是linux平台，而如果要指定是Xcode，就后面指定Xcode，而debug是编译的目录，编译之后，所有的生成文件都在这个目录下面，包括可执行文件Inception。可执行文件在<code>debug/sql/</code>目录下面（不同平台有可能不相同）。</p>
+<ul>
+<li>
+<p>配置文件：/data/conf/inception/inception.cnf</p>
+</li>
+<li>
+<p>启动：/data/svr/inception/debug/sql/Inception &ndash;defaults-file=/data/conf/inception/inception.cnf</p>
+</li>
+<li>
+<p>inception 配置文件说明 http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=22121563</p>
+</li>
+</ul>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>
+<p>inception 下载源码编译一次后，如果需要做迁移，迁移的两台主机 系统是一样的，那么可以直接把编译文件 copy 过去运行即可。</p>
+</li>
+<li>
+<p>测试环境的DBMS，是给test-a，test-b等环境使用，地址是 192.168.1.15</p>
+</li>
+<li>
+<p>开发环境的 inception 可以采用 10.10.50.30 环境下的 /data/svr/inception</p>
+</li>
+</ul>
+<h3 id="soar">soar 安装</h3>
+<p>soar 作为一个工具，是不需要运行的，只要在指定目录下有这个二进制代码，即可</p>
+<p>下载地址https://github.com/XiaoMi/soar 根据系统下载二进制 文件即可</p>
+<ul>
+<li>只有一个二进制可执行文件：/data/svr/soar/soar.linux-amd64</li>
+<li>配置文件：/data/svr/soar/soar.yaml</li>
+<li>soar配置文件说明 http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=22121563</li>
+</ul>
+<h3 id="inception_1">inception配置</h3>
+<ul>
+<li>inception配置文件 现有配置 </li>
+</ul>
+<p>http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=22121563</p>
+<ul>
+<li>inception 默认的配置</li>
+</ul>
+<p>https://inception-document.readthedocs.io/zh_CN/latest/variables/</p>
+<p>常遇见的配置</p>
+<table>
+<thead>
+<tr>
+<th>参数名字</th>
+<th>可选参数</th>
+<th>默认值</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inception_check_insert_field</td>
+<td>ON/OFF</td>
+<td>ON</td>
+<td>是不是要检查插入语句中的列链表的存在性</td>
+</tr>
+<tr>
+<td>inception_enable_nullable</td>
+<td>ON/OFF</td>
+<td>ON</td>
+<td>创建或者新增列时如果列为NULL，是不是报错</td>
+</tr>
+<tr>
+<td>inception_max_update_rows</td>
+<td>1-MAX</td>
+<td>10000</td>
+<td>在一个修改语句中，预计影响的最大行数，超过这个数就报错</td>
+</tr>
+<tr>
+<td>inception_check_column_default_value</td>
+<td>ON/OFF</td>
+<td>ON</td>
+<td>检查在建表、修改列、新增列时，新的列属性是不是要有默认值</td>
+</tr>
+<tr>
+<td>inception_check_timestamp_default</td>
+<td>ON/OFF</td>
+<td>ON</td>
+<td>建表时，如果没有为timestamp类型指定默认值，则报错</td>
+</tr>
+<tr>
+<td>nception_enable_not_innodb</td>
+<td>ON/OFF</td>
+<td>OFF</td>
+<td>建表指定的存储引擎不为Innodb，不报错</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>对线上 数据库的要求： https://qunarcorp.github.io/inception/requires/</p>
+</li>
+<li>
+<p>线上服务器必须要打开 binlog，在启动时需要设置参数log_bin、log_bin_index等关于 binlog 的参数。不然不会备份及生成回滚语句。</p>
+</li>
+<li>参数binlog_format必须要设置为 mixed 或者 row 模式，通过语句： set global binlog_format=mixed/row 来设置，如果是 statement 模式，则不做备份及回滚语句的生成</li>
+</ul>
+<p>DBMS 的运行方式</p>
+<p>dbms是采用django框架, 部署时 搭配 gunicorn 来使用：</p>
+<p><code>dbms+ gunicorn + nginx</code>  gunicorn 本身来守护 进程，无需supervisord</p>
+<p>publish-server 等tornado 框架应用，无需gunicorn</p>
+<p><code>server+ nginx +supersisord</code> </p>
+<p>两种方式下 nginx作用的差异</p>
+<p>tornado模式下nginx的作用：</p>
+<ul>
+<li>前端静态文件服务器</li>
+<li>端口转发</li>
+<li>负载均衡</li>
+</ul>
+<p>django模式下nginx的作用：</p>
+<ul>
+<li>前端静态文件服务器</li>
+<li>端口转发</li>
+</ul>
+<p>django 的负载均衡是gunicorn 来完成的，我们在运行 /data/sh/dbms.sh start 时，实际上是把gunicorn 启动起来，django只是作为一个网络框架（framework），是不具备server的功能。 </p>
+<p>tornado 则不仅是个网络框架，还同时是个server,但是它自身不具备负载均衡的管理，需要借助于nginx 。</p>
+<h2 id="watcher">watcher</h2>
+<h3 id="_2">架构</h3>
+<p>http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=27920155</p>
+<p><img alt="image-20200429191715443" src="http://res-doc.yunnex.com/picgo/image-20200429191715443.png" /></p>
+<p>watcher 也是采用的 tornado 框架，这个跟 cmdb-server ,publish-server 都是一样。</p>
+<p>在部署上，也是类似的组件： <code>watcher-server + nginx +supervisord</code> </p>
+<p>架构中涉及的zabbix-agent，主要是为以下资源获取监控信息：</p>
+<ul>
+<li>
+<p>udb</p>
+</li>
+<li>
+<p>uredis</p>
+</li>
+<li>
+<p>ulb</p>
+</li>
+</ul>
+<p>其中udb 监控信息有两种来源：</p>
+<ul>
+<li>
+<p>ucloud api 获取的监控信息</p>
+</li>
+<li>
+<p>本机通过mysql_client 连接到udb获取回来的信息</p>
+</li>
+</ul>
+<p>uredis 和ulb 只有 ucloud api 获取监控信息这唯一来源。</p>
+<p>前段时间，由于ucloud 的不同项目间，网络不可达的原因，我们把 udb 的通过mysql-client 获取的监控信息给迁移到了混合云主机（172.16.1.13）上，其余的还保留在 原来主机上。</p>
+<p>在做这种迁移时，除了需要把</p>
+<ul>
+<li>
+<p>/data/conf/zabbix-agentd/zabbix_params/ 目录下相关的conf 文件</p>
+</li>
+<li>
+<p>/data/sh/zabbix_scripts/目录下相关的脚本</p>
+</li>
+</ul>
+<p>这两个文件迁移外，</p>
+<p>我们还需要把udb 的interface ip 由原来所在的主机IP  修改成迁移后的 混合云主机的IP（172.16.1.13），这里建议调用 zabbix-api 去修改。</p>
+<p>每天定时任务的配置文件http://wiki.corp.yunnex.com/pages/viewpage.action?pageId=27920155</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../7.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/" class="btn btn-neutral float-right" title="dbms部署">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../4.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/" class="btn btn-neutral" title="publish功能介绍"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2014-2016 <a href="https://wutongtree.com" target="_blank">wutongtree.com</a></p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../4.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5D%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../7.%5B%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%5DDBMS%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
